@@ -115,6 +115,14 @@
   }
   h1 em { font-style: normal; color: var(--blue); }
   .hero-sub { font-size: 1.02rem; color: var(--muted); line-height: 1.75; margin-bottom: 2.5rem; max-width: 460px; }
+  .hero-photo-row { display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2.5rem; }
+  .hero-photo { width: 130px; height: 160px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); flex-shrink: 0; }
+  .hero-sub-wrap .hero-sub { margin-bottom: 1rem; max-width: 480px; }
+  .hero-sub-wrap .hero-sub:last-child { margin-bottom: 0; }
+  @media (max-width: 560px) {
+    .hero-photo-row { flex-direction: column; align-items: center; text-align: center; }
+    .hero-sub-wrap .hero-sub { max-width: 100%; }
+  }
   .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; }
   .btn {
     display: inline-flex; align-items: center; gap: 0.5rem;
@@ -348,7 +356,6 @@
 <nav>
   <a href="#hero" class="nav-logo"><span>//</span> teo.roccamatisi</a>
   <ul>
-    <li><a href="#about" data-i18n="nav.profile">Profil</a></li>
     <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
     <li><a href="#experience" data-i18n="nav.experience">Expérience</a></li>
     <li><a href="#education" data-i18n="nav.education">Formation</a></li>
@@ -369,7 +376,14 @@
       <div>
         <div class="hero-tag" data-i18n="hero.tag">Élève ingénieur · Physique & Data Science</div>
         <h1>Téo <em>Rocca&shy;matisi</em></h1>
-        <p class="hero-sub" data-i18n="hero.sub">Élève ingénieur à l'ESPCI Paris - PSL. Je travaille sur la simulation numérique par éléments finis (FreeFem++), la mécanique des fluides et la physique quantique expérimentale, avec un intérêt croissant pour la data science et l'intelligence artificielle.</p>
+        <div class="hero-photo-row">
+          <img src="photo-teo.jpg" alt="Téo Roccamatisi" class="hero-photo">
+          <div class="hero-sub-wrap">
+            <p class="hero-sub" data-i18n="hero.sub1">Je suis étudiant en école d'ingénieurs à l'ESPCI Paris - PSL, une grande école spécialisée en physique et chimie qui combine théorie avancée et travaux pratiques en laboratoire.</p>
+            <p class="hero-sub" data-i18n="hero.sub2">Ma formation est pluridisciplinaire : mathématiques appliquées, modélisation numérique par éléments finis, traitement des données et intelligence artificielle, pour une approche complète de la recherche et de l'innovation.</p>
+            <p class="hero-sub" data-i18n="hero.sub3">Je partage ici des projets et devoirs réalisés dans le cadre de ma formation, ainsi que des travaux personnels menés par intérêt et curiosité. Ces projets ne visent pas le formalisme d'un article scientifique, mais reflètent mon approche et mes méthodes de travail.</p>
+          </div>
+        </div>
         <div class="hero-cta">
           <a href="#projects" class="btn btn-primary" data-i18n="hero.cta1">Voir mes projets →</a>
           <a href="https://www.linkedin.com/in/teo-roccamatisi/" class="btn btn-outline" target="_blank" data-i18n="hero.cta2">Me contacter sur LinkedIn</a>
@@ -381,7 +395,6 @@
         <div class="hud-row"><span class="hud-label" data-i18n="hud.l.spec">Spécialité</span><span class="hud-value orange" data-i18n="hud.v.spec">Physique, Simulation & IA</span></div>
         <div class="hud-row"><span class="hud-label" data-i18n="hud.l.loc">Localisation</span><span class="hud-value">Paris, France 🇫🇷</span></div>
         <div class="hud-row"><span class="hud-label" data-i18n="hud.l.seek">Recherche</span><span class="hud-value green" data-i18n="hud.v.seek">Stage / alternance · à venir</span></div>
-        <div class="hud-row"><span class="hud-label" data-i18n="hud.l.mention">Bac</span><span class="hud-value">Mention Très Bien</span></div>
         <div class="hud-research">
           <div class="hud-header" style="margin-top:1.1rem"><span data-i18n="hud.research">// dernière expérience</span></div>
           <div class="hud-row"><span class="hud-label" data-i18n="hud.r.topic">Sujet</span><span class="hud-value" data-i18n="hud.r.topic.v">Déformation de vésicules en microfluidique</span></div>
@@ -393,36 +406,12 @@
   </div>
 </section>
 
-<div class="divider"></div>
-
-<section id="about">
-  <div class="container">
-    <div class="about-grid reveal">
-      <div class="about-text">
-        <div class="section-label" data-i18n="about.label">// 01 · Profil</div>
-        <h2 data-i18n="about.h2">Entre physique expérimentale et modélisation numérique</h2>
-        <p data-i18n="about.p1">Je suis étudiant en école d'ingénieurs à l'<strong>ESPCI Paris - PSL</strong>, une grande école spécialisée en physique et chimie qui combine théorie avancée et travaux pratiques en laboratoire.</p>
-        <p data-i18n="about.p2">Ma formation est pluridisciplinaire : mathématiques appliquées, modélisation numérique par éléments finis, traitement des données et intelligence artificielle, pour une approche complète de la recherche et de l'innovation.</p>
-        <p data-i18n="about.p3">Je partage ici des projets et devoirs réalisés dans le cadre de ma formation, ainsi que des travaux personnels menés par intérêt et curiosité. Ces projets ne visent pas le formalisme d'un article scientifique, mais reflètent mon approche et mes méthodes de travail.</p>
-        <div class="stat-grid">
-          <div class="stat-card"><div class="stat-num">1</div><div class="stat-label" data-i18n="stat.stage">Stage de recherche (labo SIMM)</div></div>
-          <div class="stat-card"><div class="stat-num orange">9</div><div class="stat-label" data-i18n="stat.projects">Projets académiques réalisés</div></div>
-          <div class="stat-card"><div class="stat-num">2</div><div class="stat-label" data-i18n="stat.schools">Grandes écoles (ESPCI + prépa)</div></div>
-          <div class="stat-card"><div class="stat-num orange">TB</div><div class="stat-label" data-i18n="stat.bac">Mention au Baccalauréat</div></div>
-        </div>
-      </div>
-      <div class="about-photo-wrap">
-        <img src="photo-teo.jpg" alt="Téo Roccamatisi" class="about-photo">
-      </div>
-    </div>
-  </div>
-</section>
 
 <div class="divider"></div>
 
 <section id="projects">
   <div class="container">
-    <div class="section-label" data-i18n="proj.label">// 02 · Projets</div>
+    <div class="section-label" data-i18n="proj.label">// 01 · Projets</div>
     <h2 data-i18n="proj.h2">Réalisations académiques & personnelles</h2>
     <p class="section-lead" data-i18n="proj.lead">Projets et devoirs réalisés à l'ESPCI Paris - PSL, ainsi que des travaux personnels menés par curiosité.</p>
     <div class="projects-grid">
@@ -641,7 +630,7 @@
 
 <section id="experience">
   <div class="container reveal">
-    <div class="section-label" data-i18n="exp.label">// 03 · Expérience</div>
+    <div class="section-label" data-i18n="exp.label">// 02 · Expérience</div>
     <h2 data-i18n="exp.h2">Expérience</h2>
     <p class="section-lead" data-i18n="exp.lead">Une immersion en laboratoire de recherche, au contact de la modélisation appliquée.</p>
     <div class="timeline">
@@ -663,7 +652,7 @@
 
 <section id="education">
   <div class="container reveal">
-    <div class="section-label" data-i18n="edu.label">// 04 · Formation</div>
+    <div class="section-label" data-i18n="edu.label">// 03 · Formation</div>
     <h2 data-i18n="edu.h2">Formation</h2>
     <p class="section-lead" data-i18n="edu.lead">Un parcours scientifique exigeant, de la classe préparatoire à l'ESPCI Paris - PSL.</p>
     <div class="timeline">
@@ -738,7 +727,7 @@
 <section id="contact">
   <div class="container">
     <div class="contact-box reveal">
-      <div class="section-label" data-i18n="contact.label">// 05 · Contact</div>
+      <div class="section-label" data-i18n="contact.label">// 04 · Contact</div>
       <h2 data-i18n="contact.h2">Ouvert aux opportunités</h2>
       <p data-i18n="contact.p">Stage, alternance ou échanges autour de la simulation numérique, la physique et la data science : n'hésitez pas à me contacter.</p>
       <div class="contact-links">
@@ -759,7 +748,9 @@ const T = {
   fr: {
     'nav.profile':'Profil','nav.projects':'Projets','nav.experience':'Expérience','nav.education':'Formation','nav.skills':'Compétences','nav.contact':'Contact',
     'hero.tag':'Élève ingénieur · Physique & Data Science',
-    'hero.sub':'Élève ingénieur à l\'ESPCI Paris - PSL. Je travaille sur la simulation numérique par éléments finis (FreeFem++), la mécanique des fluides et la physique quantique expérimentale, avec un intérêt croissant pour la data science et l\'intelligence artificielle.',
+    'hero.sub1':'Je suis étudiant en école d\'ingénieurs à l\'ESPCI Paris - PSL, une grande école spécialisée en physique et chimie qui combine théorie avancée et travaux pratiques en laboratoire.',
+    'hero.sub2':'Ma formation est pluridisciplinaire : mathématiques appliquées, modélisation numérique par éléments finis, traitement des données et intelligence artificielle, pour une approche complète de la recherche et de l\'innovation.',
+    'hero.sub3':'Je partage ici des projets et devoirs réalisés dans le cadre de ma formation, ainsi que des travaux personnels menés par intérêt et curiosité. Ces projets ne visent pas le formalisme d\'un article scientifique, mais reflètent mon approche et mes méthodes de travail.',
     'hero.cta1':'Voir mes projets →','hero.cta2':'Me contacter sur LinkedIn',
     'hud.status':'profil.status · actif','hud.l.edu':'Formation','hud.l.spec':'Spécialité','hud.v.spec':'Physique, Simulation & IA','hud.l.loc':'Localisation','hud.l.seek':'Recherche','hud.v.seek':'Stage / alternance · à venir','hud.l.mention':'Bac','hud.research':'// dernière expérience','hud.r.topic':'Sujet','hud.r.topic.v':'Déformation de vésicules en microfluidique','hud.r.partner':'Laboratoire','hud.r.stack':'Stack',
     'about.label':'// 01 · Profil','about.h2':'Entre physique expérimentale et modélisation numérique',
@@ -776,9 +767,9 @@ const T = {
     'tl.date.renoir':'2019 - 2022','tl.renoir.loc':'Bondy, France','tl.renoir.deg':'Baccalauréat Général · Mention Très Bien',
     'mod.b1':'Mathématiques','mod.b2':'Physique-Chimie','mod.b3':'Maths Expertes',
     'stat.stage':'Stage de recherche (labo SIMM)','stat.projects':'Projets académiques réalisés','stat.schools':'Grandes écoles (ESPCI + prépa)','stat.bac':'Mention au Baccalauréat',
-    'proj.label':'// 02 · Projets','proj.h2':'Réalisations académiques & personnelles','proj.lead':'Projets et devoirs réalisés à l\'ESPCI Paris - PSL, ainsi que des travaux personnels menés par curiosité.',
-    'exp.label':'// 03 · Expérience','exp.h2':'Expérience','exp.lead':'Une immersion en laboratoire de recherche, au contact de la modélisation appliquée.',
-    'edu.label':'// 04 · Formation','edu.h2':'Formation','edu.lead':'Un parcours scientifique exigeant, de la classe préparatoire à l\'ESPCI Paris - PSL.',
+    'proj.label':'// 01 · Projets','proj.h2':'Réalisations académiques & personnelles','proj.lead':'Projets et devoirs réalisés à l\'ESPCI Paris - PSL, ainsi que des travaux personnels menés par curiosité.',
+    'exp.label':'// 02 · Expérience','exp.h2':'Expérience','exp.lead':'Une immersion en laboratoire de recherche, au contact de la modélisation appliquée.',
+    'edu.label':'// 03 · Formation','edu.h2':'Formation','edu.lead':'Un parcours scientifique exigeant, de la classe préparatoire à l\'ESPCI Paris - PSL.',
     'p1.type':'Mécanique des fluides','p1.title':'Modélisation de la fumée d\'une cheminée','p1.partner':'ESPCI Paris - PSL · Projet académique',
     'p1.b1':'Modélisation de la dispersion d\'un gaz émis par une cheminée à l\'aide du modèle k-ε dans le cadre de l\'approximation de Boussinesq, avec le logiciel FreeFem++.','p1.footer':'📄 Lire le rapport',
     'p2.type':'Mécanique des fluides','p2.title':'Modélisation de l\'écoulement d\'un fluide non newtonien','p2.partner':'ESPCI Paris - PSL · Projet académique',
@@ -802,13 +793,15 @@ const T = {
     'skills.label':'// 03 · Compétences','skills.h2':'Stack technique','skills.lead':'Un profil qui couvre la simulation numérique, la physique expérimentale et la data science.',
     'sg.sim':'Simulation & Modélisation','sg.dev':'Data & Développement','sg.phys':'Physique expérimentale','sg.other':'Autres domaines',
     'chip.ia':'Intelligence Artificielle','chip.ml':'Machine Learning','chip.pq':'Physique quantique','chip.stat':'Physique statistique','chip.signal':'Traitement du signal','chip.team':'Travail d\'équipe',
-    'contact.label':'// 05 · Contact','contact.h2':'Ouvert aux opportunités','contact.p':'Stage, alternance ou échanges autour de la simulation numérique, la physique et la data science : n\'hésitez pas à me contacter.',
+    'contact.label':'// 04 · Contact','contact.h2':'Ouvert aux opportunités','contact.p':'Stage, alternance ou échanges autour de la simulation numérique, la physique et la data science : n\'hésitez pas à me contacter.',
     'footer.text':'© 2026 · Téo Roccamatisi · Élève Ingénieur ESPCI Paris - PSL · Paris, France'
   },
   en: {
     'nav.profile':'Profile','nav.projects':'Projects','nav.experience':'Experience','nav.education':'Education','nav.skills':'Skills','nav.contact':'Contact',
     'hero.tag':'Engineering Student · Physics & Data Science',
-    'hero.sub':'Engineering student at ESPCI Paris - PSL. I work on finite element numerical simulation (FreeFem++), fluid mechanics, and experimental quantum physics, with a growing interest in data science and artificial intelligence.',
+    'hero.sub1':'I am an engineering student at ESPCI Paris - PSL, a top French engineering school specialized in physics and chemistry, combining advanced theory with hands-on laboratory work.',
+    'hero.sub2':'My training is multidisciplinary: applied mathematics, finite element numerical modelling, data processing and artificial intelligence, for a comprehensive approach to research and innovation.',
+    'hero.sub3':'Here I share projects and coursework completed as part of my studies, as well as personal projects pursued out of interest and curiosity. These projects don\'t aim for the formalism of a scientific paper, but reflect my approach and working methods.',
     'hero.cta1':'View my projects →','hero.cta2':'Contact me on LinkedIn',
     'hud.status':'profile.status · active','hud.l.edu':'Education','hud.l.spec':'Specialty','hud.v.spec':'Physics, Simulation & AI','hud.l.loc':'Location','hud.l.seek':'Seeking','hud.v.seek':'Internship / apprenticeship · upcoming','hud.l.mention':'High School','hud.research':'// latest experience','hud.r.topic':'Topic','hud.r.topic.v':'Vesicle deformation in microfluidic trap','hud.r.partner':'Laboratory','hud.r.stack':'Stack',
     'about.label':'// 01 · Profile','about.h2':'Between experimental physics and numerical modelling',
@@ -825,9 +818,9 @@ const T = {
     'tl.date.renoir':'2019 - 2022','tl.renoir.loc':'Bondy, France','tl.renoir.deg':'French Baccalaureate · High Honours',
     'mod.b1':'Mathematics','mod.b2':'Physics-Chemistry','mod.b3':'Advanced Mathematics',
     'stat.stage':'Research internship (SIMM lab)','stat.projects':'Academic projects completed','stat.schools':'Top schools (ESPCI + CPGE)','stat.bac':'High School Honours',
-    'proj.label':'// 02 · Projects','proj.h2':'Academic & Personal Projects','proj.lead':'Projects and coursework from ESPCI Paris - PSL, along with personal projects pursued out of curiosity.',
-    'exp.label':'// 03 · Experience','exp.h2':'Experience','exp.lead':'An immersion in a research laboratory, working on applied modelling.',
-    'edu.label':'// 04 · Education','edu.h2':'Education','edu.lead':'A demanding scientific path, from preparatory classes to ESPCI Paris - PSL.',
+    'proj.label':'// 01 · Projects','proj.h2':'Academic & Personal Projects','proj.lead':'Projects and coursework from ESPCI Paris - PSL, along with personal projects pursued out of curiosity.',
+    'exp.label':'// 02 · Experience','exp.h2':'Experience','exp.lead':'An immersion in a research laboratory, working on applied modelling.',
+    'edu.label':'// 03 · Education','edu.h2':'Education','edu.lead':'A demanding scientific path, from preparatory classes to ESPCI Paris - PSL.',
     'p1.type':'Fluid Mechanics','p1.title':'Modelling Smoke from a Chimney','p1.partner':'ESPCI Paris - PSL · Academic Project',
     'p1.b1':'Modelling the dispersion of a gas emitted by a chimney using the k-ε model under the Boussinesq approximation, with FreeFem++.','p1.footer':'📄 Read the Report',
     'p2.type':'Fluid Mechanics','p2.title':'Modelling Non-Newtonian Fluid Flow','p2.partner':'ESPCI Paris - PSL · Academic Project',
@@ -851,7 +844,7 @@ const T = {
     'skills.label':'// 03 · Skills','skills.h2':'Technical Stack','skills.lead':'A profile spanning numerical simulation, experimental physics, and data science.',
     'sg.sim':'Simulation & Modelling','sg.dev':'Data & Development','sg.phys':'Experimental Physics','sg.other':'Other Domains',
     'chip.ia':'Artificial Intelligence','chip.ml':'Machine Learning','chip.pq':'Quantum Physics','chip.stat':'Statistical Physics','chip.signal':'Signal Processing','chip.team':'Teamwork',
-    'contact.label':'// 05 · Contact','contact.h2':'Open to Opportunities','contact.p':'Internship, apprenticeship, or discussions around numerical simulation, physics and data science: feel free to get in touch.',
+    'contact.label':'// 04 · Contact','contact.h2':'Open to Opportunities','contact.p':'Internship, apprenticeship, or discussions around numerical simulation, physics and data science: feel free to get in touch.',
     'footer.text':'© 2026 · Téo Roccamatisi · Engineering Student, ESPCI Paris - PSL · Paris, France'
   }
 };
