@@ -16,18 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-<style>
   :root {
-    --bg: #f5f7fb; --surface: #ffffff; --surface-2: #eef3f9;
-    --ink: #2a3a52; --ink-strong: #0c1a30; --muted: #51647e; --faint: #8da2bb;
-    --blue: #1156ad; --blue-soft: #3f7fd0;
-    --orange: #c95d18; --green: #15835a;
-    --border: rgba(17,86,173,0.14); --border-strong: rgba(17,86,173,0.32);
-    --grid: rgba(17,86,173,0.05);
-    --nav-bg: rgba(245,247,251,0.92);
-    --shadow: 0 1px 2px rgba(12,26,48,0.04), 0 8px 24px -12px rgba(12,26,48,0.10);
-  }
-  body.dark {
     --bg: #0a1322; --surface: #101c30; --surface-2: #16253e;
     --ink: #c4d4e8; --ink-strong: #eef6ff; --muted: #7d93ad; --faint: #46607e;
     --blue: #6ba4ee; --blue-soft: #3e6fae;
@@ -37,6 +26,7 @@
     --nav-bg: rgba(10,19,34,0.92);
     --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 28px -14px rgba(0,0,0,0.5);
   }
+
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 84px; }
@@ -93,12 +83,6 @@
   .lang-btn:hover, .lang-btn.active { color: var(--blue); }
   .lang-btn.active { font-weight: 600; }
   .lang-sep { color: var(--faint); font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
-  .theme-btn {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
-    font-size: 13px; cursor: pointer; padding: 4px 9px; margin-left: 0.35rem;
-    transition: border-color 0.2s; line-height: 1.4;
-  }
-  .theme-btn:hover { border-color: var(--blue); }
 
   /* ---------- HERO ---------- */
   #hero { min-height: 92vh; display: flex; align-items: center; padding: 8rem 0 5rem; }
@@ -224,12 +208,9 @@
     font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em;
     text-transform: uppercase; padding: 3.5px 9px; border-radius: 3px; display: inline-block; margin-bottom: 0.9rem;
   }
-  .type-ai { color: var(--blue); background: rgba(17,86,173,0.07); border: 1px solid rgba(17,86,173,0.22); }
-  .type-aero { color: var(--orange); background: rgba(201,93,24,0.07); border: 1px solid rgba(201,93,24,0.25); }
-  .type-both { color: var(--green); background: rgba(21,131,90,0.07); border: 1px solid rgba(21,131,90,0.25); }
-  body.dark .type-ai { background: rgba(107,164,238,0.08); border-color: rgba(107,164,238,0.3); }
-  body.dark .type-aero { background: rgba(232,132,63,0.08); border-color: rgba(232,132,63,0.3); }
-  body.dark .type-both { background: rgba(61,189,138,0.08); border-color: rgba(61,189,138,0.3); }
+  .type-ai { color: var(--blue); background: rgba(107,164,238,0.08); border: 1px solid rgba(107,164,238,0.3); }
+  .type-aero { color: var(--orange); background: rgba(232,132,63,0.08); border: 1px solid rgba(232,132,63,0.3); }
+  .type-both { color: var(--green); background: rgba(61,189,138,0.08); border: 1px solid rgba(61,189,138,0.3); }
 
   .project-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--ink-strong); margin-bottom: 0.3rem; letter-spacing: -0.01em; }
   .project-partner { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--faint); letter-spacing: 0.07em; }
@@ -267,8 +248,7 @@
     font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
     text-decoration: none; transition: background 0.2s;
   }
-  .project-footer:hover { background: rgba(17,86,173,0.045); }
-  body.dark .project-footer:hover { background: rgba(107,164,238,0.06); }
+  .project-footer:hover { background: rgba(107,164,238,0.06); }
   .project-footer.accent-orange { color: var(--orange); }
   .project-footer.accent-orange:hover { background: rgba(201,93,24,0.05); }
   .project-footer.accent-green { color: var(--green); }
@@ -364,7 +344,6 @@
     <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
     <span class="lang-sep">|</span>
     <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-    <button class="theme-btn" onclick="toggleTheme()" aria-label="Changer de thème">🌙</button>
   </div>
 </nav>
 
@@ -372,7 +351,7 @@
   <div class="container">
     <div class="hero-inner">
       <div>
-        <div class="hero-tag" data-i18n="hero.tag">Élève ingénieur · Physique & Optique</div>
+        <div class="hero-tag" data-i18n="hero.tag">Optique · Mécanique quantique · Mécanique des fluides · Simulation numérique</div>
         <h1>Téo <em>Rocca&shy;matisi</em></h1>
         <div class="hero-photo-row">
           <img src="photo-teo.jpg" alt="Téo Roccamatisi" class="hero-photo">
@@ -388,7 +367,7 @@
       </div>
       <div class="hud-panel">
         <div class="hud-row"><span class="hud-label" data-i18n="hud.l.edu">Formation</span><span class="hud-value">ESPCI Paris - PSL</span></div>
-        <div class="hud-row"><span class="hud-label" data-i18n="hud.l.spec">Spécialité</span><span class="hud-value orange" data-i18n="hud.v.spec">Physique, Optique & Simulation</span></div>
+        <div class="hud-row"><span class="hud-label" data-i18n="hud.l.spec">Spécialité</span><span class="hud-value orange" data-i18n="hud.v.spec">Optique, Mécanique quantique, Mécanique des fluides & Simulation numérique</span></div>
         <div class="hud-research">
           <div class="hud-header" style="margin-top:1.1rem"><span data-i18n="hud.research">// dernière expérience</span></div>
           <div class="hud-row"><span class="hud-label" data-i18n="hud.r.topic">Sujet</span><span class="hud-value" data-i18n="hud.r.topic.v">Déformation de vésicules en microfluidique</span></div>
@@ -616,6 +595,52 @@
         </a>
       </article>
 
+      <!-- PROJET 10 : Sillage / Bénard-von Kármán -->
+      <article class="project-card reveal">
+        <div class="project-head">
+          <span class="project-type type-aero" data-i18n="p10.type">Mécanique des fluides</span>
+          <h3 class="project-title" data-i18n="p10.title">Simulation du sillage d'un obstacle confiné : instabilité de Bénard-von Kármán</h3>
+          <div class="project-partner" data-i18n="p10.partner">ESPCI Paris - PSL · Travaux pratiques</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li data-i18n="p10.b1">Résolution des équations de Navier-Stokes incompressibles par éléments finis (FreeFem++) pour déterminer le nombre de Reynolds critique de l'instabilité, par dichotomie puis par extrapolation linéaire du taux de croissance.</li>
+            <li class="orange" data-i18n="p10.b2">Vérification de la loi d'amplitude de Stuart-Landau au voisinage de la bifurcation de Hopf.</li>
+          </ul>
+          <div>
+            <div class="project-tags">
+              <span class="tag">FreeFem++</span><span class="tag">Éléments finis</span><span class="tag">Mécanique des fluides</span><span class="tag">Python</span>
+            </div>
+          </div>
+        </div>
+        <a href="pdfs/Meca_flu.pdf" target="_blank" class="project-footer">
+          <span data-i18n="p10.footer">📄 Lire le rapport</span><span class="project-footer-icon">↗</span>
+        </a>
+      </article>
+
+      <!-- PROJET 11 : Retournement temporel / diffraction -->
+      <article class="project-card reveal">
+        <div class="project-head">
+          <span class="project-type type-both" data-i18n="p11.type">Simulation numérique + Traitement du signal</span>
+          <h3 class="project-title" data-i18n="p11.title">Retournement temporel ultrasonore et focalisation par diffraction</h3>
+          <div class="project-partner" data-i18n="p11.partner">ESPCI Paris - PSL · Projet méthodes numériques</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li data-i18n="p11.b1">Implémentation de la DFT, de la FFT (algorithme de Cooley-Tukey) et de la convolution rapide en Python pour simuler la réponse impulsionnelle d'un réseau de transducteurs ultrasonores.</li>
+            <li class="orange" data-i18n="p11.b2">Simulation du retournement temporel et vérification de la loi de focalisation λF/O sur la taille de la tache focale.</li>
+          </ul>
+          <div>
+            <div class="project-tags">
+              <span class="tag">Python</span><span class="tag">FFT</span><span class="tag">Traitement du signal</span><span class="tag">Simulation numérique</span>
+            </div>
+          </div>
+        </div>
+        <a href="pdfs/TP_methodes_numeriques.pdf" target="_blank" class="project-footer">
+          <span data-i18n="p11.footer">📄 Lire le rapport</span><span class="project-footer-icon">↗</span>
+        </a>
+      </article>
+
     </div>
   </div>
 </section>
@@ -741,12 +766,12 @@
 const T = {
   fr: {
     'nav.profile':'Profil','nav.projects':'Projets','nav.experience':'Expérience','nav.education':'Formation','nav.skills':'Compétences','nav.contact':'Contact',
-    'hero.tag':'Élève ingénieur · Physique & Optique',
+    'hero.tag':'Optique · Mécanique quantique · Mécanique des fluides · Simulation numérique',
     'hero.sub1':'Je suis étudiant en école d\'ingénieurs à l\'ESPCI Paris - PSL, une grande école spécialisée en physique et chimie qui combine théorie avancée et travaux pratiques en laboratoire.',
     'hero.sub2':'Ma formation est pluridisciplinaire : mathématiques appliquées, modélisation numérique par éléments finis, traitement des données et intelligence artificielle, pour une approche complète de la recherche et de l\'innovation.',
     'hero.sub3':'Je partage ici des projets et devoirs réalisés dans le cadre de ma formation, ainsi que des travaux personnels menés par intérêt et curiosité. Ces projets ne visent pas le formalisme d\'un article scientifique, mais reflètent mon approche et mes méthodes de travail.',
     'hero.cta1':'Voir mes projets →','hero.cta2':'Me contacter sur LinkedIn',
-    'hud.status':'profil.status · actif','hud.l.edu':'Formation','hud.l.spec':'Spécialité','hud.v.spec':'Physique, Optique & Simulation','hud.l.loc':'Localisation','hud.l.seek':'Recherche','hud.v.seek':'Stage / alternance · à venir','hud.l.mention':'Bac','hud.research':'// dernière expérience','hud.r.topic':'Sujet','hud.r.topic.v':'Déformation de vésicules en microfluidique','hud.r.partner':'Laboratoire','hud.r.stack':'Stack',
+    'hud.status':'profil.status · actif','hud.l.edu':'Formation','hud.l.spec':'Spécialité','hud.v.spec':'Optique, Mécanique quantique, Mécanique des fluides & Simulation numérique','hud.l.loc':'Localisation','hud.l.seek':'Recherche','hud.v.seek':'Stage / alternance · à venir','hud.l.mention':'Bac','hud.research':'// dernière expérience','hud.r.topic':'Sujet','hud.r.topic.v':'Déformation de vésicules en microfluidique','hud.r.partner':'Laboratoire','hud.r.stack':'Stack',
     'about.label':'// 01 · Profil','about.h2':'Entre physique expérimentale et modélisation numérique',
     'about.p1':'Je suis étudiant en école d\'ingénieurs à l\'<strong>ESPCI Paris - PSL</strong>, une grande école spécialisée en physique et chimie qui combine théorie avancée et travaux pratiques en laboratoire.',
     'about.p2':'Ma formation est pluridisciplinaire : mathématiques appliquées, modélisation numérique par éléments finis, traitement des données et intelligence artificielle, pour une approche complète de la recherche et de l\'innovation.',
@@ -784,6 +809,12 @@ const T = {
     'p8.b1':'Étude des principes de la RMN : mesure des temps de relaxation (T1, T2) par échos de spin et méthode de Carr-Purcell.','p8.b2':'Analyse spectrale par Transformée de Fourier.','p8.footer':'📄 Lire le rapport',
     'p9.type':'Simulation numérique','p9.title':'Simulation numérique : billard américain','p9.partner':'Projet personnel',
     'p9.b1':'Simulation déterministe de la "casse" au billard codée en Python.','p9.b2':'Modélisation des chocs élastiques multiples pour étudier la sensibilité aux conditions initiales et le chaos.','p9.footer':'📄 Lire le rapport',
+    'p10.type':'Mécanique des fluides','p10.title':'Simulation du sillage d\'un obstacle confiné : instabilité de Bénard-von Kármán','p10.partner':'ESPCI Paris - PSL · Travaux pratiques',
+    'p10.b1':'Résolution des équations de Navier-Stokes incompressibles par éléments finis (FreeFem++) pour déterminer le nombre de Reynolds critique de l\'instabilité, par dichotomie puis par extrapolation linéaire du taux de croissance.',
+    'p10.b2':'Vérification de la loi d\'amplitude de Stuart-Landau au voisinage de la bifurcation de Hopf.','p10.footer':'📄 Lire le rapport',
+    'p11.type':'Simulation numérique + Traitement du signal','p11.title':'Retournement temporel ultrasonore et focalisation par diffraction','p11.partner':'ESPCI Paris - PSL · Projet méthodes numériques',
+    'p11.b1':'Implémentation de la DFT, de la FFT (algorithme de Cooley-Tukey) et de la convolution rapide en Python pour simuler la réponse impulsionnelle d\'un réseau de transducteurs ultrasonores.',
+    'p11.b2':'Simulation du retournement temporel et vérification de la loi de focalisation λF/O sur la taille de la tache focale.','p11.footer':'📄 Lire le rapport',
     'skills.label':'// 03 · Compétences','skills.h2':'Stack technique','skills.lead':'Un profil qui couvre la simulation numérique, la physique expérimentale et l\'optique.',
     'sg.sim':'Simulation & Modélisation','sg.dev':'Data & Développement','sg.phys':'Physique expérimentale','sg.other':'Autres domaines',
     'chip.ia':'Intelligence Artificielle','chip.ml':'Machine Learning','chip.pq':'Physique quantique','chip.stat':'Physique statistique','chip.signal':'Traitement du signal','chip.team':'Travail d\'équipe',
@@ -792,12 +823,12 @@ const T = {
   },
   en: {
     'nav.profile':'Profile','nav.projects':'Projects','nav.experience':'Experience','nav.education':'Education','nav.skills':'Skills','nav.contact':'Contact',
-    'hero.tag':'Engineering Student · Physics & Optics',
+    'hero.tag':'Optics · Quantum Mechanics · Fluid Mechanics · Numerical Simulation',
     'hero.sub1':'I am an engineering student at ESPCI Paris - PSL, a top French engineering school specialized in physics and chemistry, combining advanced theory with hands-on laboratory work.',
     'hero.sub2':'My training is multidisciplinary: applied mathematics, finite element numerical modelling, data processing and artificial intelligence, for a comprehensive approach to research and innovation.',
     'hero.sub3':'Here I share projects and coursework completed as part of my studies, as well as personal projects pursued out of interest and curiosity. These projects don\'t aim for the formalism of a scientific paper, but reflect my approach and working methods.',
     'hero.cta1':'View my projects →','hero.cta2':'Contact me on LinkedIn',
-    'hud.status':'profile.status · active','hud.l.edu':'Education','hud.l.spec':'Specialty','hud.v.spec':'Physics, Optics & Simulation','hud.l.loc':'Location','hud.l.seek':'Seeking','hud.v.seek':'Internship / apprenticeship · upcoming','hud.l.mention':'High School','hud.research':'// latest experience','hud.r.topic':'Topic','hud.r.topic.v':'Vesicle deformation in microfluidic trap','hud.r.partner':'Laboratory','hud.r.stack':'Stack',
+    'hud.status':'profile.status · active','hud.l.edu':'Education','hud.l.spec':'Specialty','hud.v.spec':'Optics, Quantum Mechanics, Fluid Mechanics & Numerical Simulation','hud.l.loc':'Location','hud.l.seek':'Seeking','hud.v.seek':'Internship / apprenticeship · upcoming','hud.l.mention':'High School','hud.research':'// latest experience','hud.r.topic':'Topic','hud.r.topic.v':'Vesicle deformation in microfluidic trap','hud.r.partner':'Laboratory','hud.r.stack':'Stack',
     'about.label':'// 01 · Profile','about.h2':'Between experimental physics and numerical modelling',
     'about.p1':'I am an engineering student at <strong>ESPCI Paris - PSL</strong>, a top French engineering school specialized in physics and chemistry, combining advanced theory with hands-on laboratory work.',
     'about.p2':'My training is multidisciplinary: applied mathematics, finite element numerical modelling, data processing and artificial intelligence, for a comprehensive approach to research and innovation.',
@@ -835,6 +866,12 @@ const T = {
     'p8.b1':'Study of NMR principles: measuring relaxation times (T1, T2) via spin echoes and the Carr-Purcell method.','p8.b2':'Spectral analysis via Fourier Transform.','p8.footer':'📄 Read the Report',
     'p9.type':'Numerical Simulation','p9.title':'Numerical Simulation: American Billiards','p9.partner':'Personal Project',
     'p9.b1':'Deterministic simulation of the opening break in billiards, coded in Python.','p9.b2':'Modelling of multiple elastic collisions to study sensitivity to initial conditions and chaos.','p9.footer':'📄 Read the Report',
+    'p10.type':'Fluid Mechanics','p10.title':'Wake Simulation Behind a Confined Obstacle: Bénard-von Kármán Instability','p10.partner':'ESPCI Paris - PSL · Lab Coursework',
+    'p10.b1':'Solving the incompressible Navier-Stokes equations with finite elements (FreeFem++) to determine the critical Reynolds number of the instability, via bisection and linear extrapolation of the growth rate.',
+    'p10.b2':'Verification of the Stuart-Landau amplitude law near the Hopf bifurcation.','p10.footer':'📄 Read the Report',
+    'p11.type':'Numerical Simulation + Signal Processing','p11.title':'Ultrasonic Time Reversal and Diffraction-Limited Focusing','p11.partner':'ESPCI Paris - PSL · Numerical Methods Project',
+    'p11.b1':'Implementation of the DFT, FFT (Cooley-Tukey algorithm) and fast convolution in Python to simulate the impulse response of an ultrasonic transducer array.',
+    'p11.b2':'Simulation of time reversal and verification of the λF/O focusing law on the focal spot size.','p11.footer':'📄 Read the Report',
     'skills.label':'// 03 · Skills','skills.h2':'Technical Stack','skills.lead':'A profile spanning numerical simulation, experimental physics, and optics.',
     'sg.sim':'Simulation & Modelling','sg.dev':'Data & Development','sg.phys':'Experimental Physics','sg.other':'Other Domains',
     'chip.ia':'Artificial Intelligence','chip.ml':'Machine Learning','chip.pq':'Quantum Physics','chip.stat':'Statistical Physics','chip.signal':'Signal Processing','chip.team':'Teamwork',
@@ -868,24 +905,14 @@ function setLang(lang) {
   localStorage.setItem('lang', lang);
 }
 
-function toggleTheme() {
-  const dark = document.body.classList.toggle('dark');
-  document.querySelector('.theme-btn').textContent = dark ? '☀️' : '🌙';
-  localStorage.setItem('theme', dark ? 'dark' : 'light');
-}
-
 // Scroll reveal
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// Restore preferences
+// Restore language preference
 (function() {
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark');
-    document.querySelector('.theme-btn').textContent = '☀️';
-  }
   const savedLang = localStorage.getItem('lang') || 'fr';
   if (savedLang !== 'fr') setLang(savedLang);
 })();
