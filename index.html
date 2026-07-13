@@ -180,6 +180,13 @@
     font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--orange);
     letter-spacing: 0.26em; text-transform: uppercase; margin-bottom: 1.5rem;
   }
+  .about-photo-wrap {
+    display: flex; align-items: flex-start; justify-content: center; padding-top: 0.5rem;
+  }
+  .about-photo {
+    width: 100%; max-width: 340px; aspect-ratio: 4/5; object-fit: cover;
+    border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow);
+  }
   .timeline { position: relative; padding-left: 1.6rem; }
   .timeline::before { content: ''; position: absolute; left: 0; top: 7px; bottom: 6px; width: 1px; background: var(--border-strong); }
   .timeline-item { position: relative; margin-bottom: 2.25rem; }
@@ -343,6 +350,8 @@
   <ul>
     <li><a href="#about" data-i18n="nav.profile">Profil</a></li>
     <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
+    <li><a href="#experience" data-i18n="nav.experience">Expérience</a></li>
+    <li><a href="#education" data-i18n="nav.education">Formation</a></li>
     <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
     <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
   </ul>
@@ -402,55 +411,8 @@
           <div class="stat-card"><div class="stat-num orange">TB</div><div class="stat-label" data-i18n="stat.bac">Mention au Baccalauréat</div></div>
         </div>
       </div>
-      <div>
-        <div class="edu-label" data-i18n="about.exp.label">// Expérience</div>
-        <div class="timeline" style="margin-bottom:2.5rem">
-          <div class="timeline-item">
-            <div class="timeline-date">JUIN 2025 - AOÛT 2025</div>
-            <div class="timeline-school">Laboratoire SIMM · <span data-i18n="tl.simm.loc">Paris, France</span></div>
-            <div class="timeline-degree" data-i18n="tl.simm.deg">Stage de recherche · Sciences et Ingénierie de la Matière Molle (UMR 7615)</div>
-            <div class="timeline-modules">
-              <span class="module-tag" data-i18n="mod.x1">Algorithme de modélisation</span>
-              <span class="module-tag" data-i18n="mod.x2">Déformation de vésicules</span>
-              <span class="module-tag" data-i18n="mod.x3">Piège microfluidique</span>
-            </div>
-          </div>
-        </div>
-        <div class="edu-label" data-i18n="about.edu.label">// Formation</div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-date" data-i18n="tl.date.espci">2024 - AUJOURD'HUI</div>
-            <div class="timeline-school">ESPCI Paris - PSL · <span data-i18n="tl.espci.loc">Paris, France</span></div>
-            <div class="timeline-degree" data-i18n="tl.espci.deg">Élève ingénieur · Grande École spécialisée en physique et chimie</div>
-            <div class="timeline-modules">
-              <span class="module-tag" data-i18n="mod.e1">Mathématiques appliquées</span>
-              <span class="module-tag" data-i18n="mod.e2">Modélisation numérique</span>
-              <span class="module-tag" data-i18n="mod.e3">Traitement des données</span>
-              <span class="module-tag" data-i18n="mod.e4">Intelligence artificielle</span>
-              <span class="module-tag" data-i18n="mod.e5">Éléments finis (PSL Week, Mines Paris)</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date" data-i18n="tl.date.saintlouis">2022 - 2024</div>
-            <div class="timeline-school">Lycée Saint-Louis · <span data-i18n="tl.saintlouis.loc">Paris, France</span></div>
-            <div class="timeline-degree" data-i18n="tl.saintlouis.deg">Classe Préparatoire aux Grandes Écoles · filière MPSI-PSI</div>
-            <div class="timeline-modules">
-              <span class="module-tag" data-i18n="mod.s1">Mathématiques</span>
-              <span class="module-tag" data-i18n="mod.s2">Physique</span>
-              <span class="module-tag" data-i18n="mod.s3">Sciences de l'ingénieur</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date" data-i18n="tl.date.renoir">2019 - 2022</div>
-            <div class="timeline-school">Lycée Jean Renoir · <span data-i18n="tl.renoir.loc">Bondy, France</span></div>
-            <div class="timeline-degree" data-i18n="tl.renoir.deg">Baccalauréat Général · Mention Très Bien</div>
-            <div class="timeline-modules">
-              <span class="module-tag" data-i18n="mod.b1">Mathématiques</span>
-              <span class="module-tag" data-i18n="mod.b2">Physique-Chimie</span>
-              <span class="module-tag" data-i18n="mod.b3">Maths Expertes</span>
-            </div>
-          </div>
-        </div>
+      <div class="about-photo-wrap">
+        <img src="photo-teo.jpg" alt="Téo Roccamatisi" class="about-photo">
       </div>
     </div>
   </div>
@@ -677,10 +639,74 @@
 
 <div class="divider"></div>
 
+<section id="experience">
+  <div class="container reveal">
+    <div class="section-label" data-i18n="exp.label">// 03 · Expérience</div>
+    <h2 data-i18n="exp.h2">Expérience</h2>
+    <p class="section-lead" data-i18n="exp.lead">Une immersion en laboratoire de recherche, au contact de la modélisation appliquée.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">JUIN 2025 - AOÛT 2025</div>
+        <div class="timeline-school">Laboratoire SIMM · <span data-i18n="tl.simm.loc">Paris, France</span></div>
+        <div class="timeline-degree" data-i18n="tl.simm.deg">Stage de recherche · Sciences et Ingénierie de la Matière Molle (UMR 7615)</div>
+        <div class="timeline-modules">
+          <span class="module-tag" data-i18n="mod.x1">Algorithme de modélisation</span>
+          <span class="module-tag" data-i18n="mod.x2">Déformation de vésicules</span>
+          <span class="module-tag" data-i18n="mod.x3">Piège microfluidique</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="education">
+  <div class="container reveal">
+    <div class="section-label" data-i18n="edu.label">// 04 · Formation</div>
+    <h2 data-i18n="edu.h2">Formation</h2>
+    <p class="section-lead" data-i18n="edu.lead">Un parcours scientifique exigeant, de la classe préparatoire à l'ESPCI Paris - PSL.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date" data-i18n="tl.date.espci">2024 - AUJOURD'HUI</div>
+        <div class="timeline-school">ESPCI Paris - PSL · <span data-i18n="tl.espci.loc">Paris, France</span></div>
+        <div class="timeline-degree" data-i18n="tl.espci.deg">Élève ingénieur · Grande École spécialisée en physique et chimie</div>
+        <div class="timeline-modules">
+          <span class="module-tag" data-i18n="mod.e1">Mathématiques appliquées</span>
+          <span class="module-tag" data-i18n="mod.e2">Modélisation numérique</span>
+          <span class="module-tag" data-i18n="mod.e3">Traitement des données</span>
+          <span class="module-tag" data-i18n="mod.e4">Intelligence artificielle</span>
+          <span class="module-tag" data-i18n="mod.e5">Éléments finis (PSL Week, Mines Paris)</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date" data-i18n="tl.date.saintlouis">2022 - 2024</div>
+        <div class="timeline-school">Lycée Saint-Louis · <span data-i18n="tl.saintlouis.loc">Paris, France</span></div>
+        <div class="timeline-degree" data-i18n="tl.saintlouis.deg">Classe Préparatoire aux Grandes Écoles · filière MPSI-PSI</div>
+        <div class="timeline-modules">
+          <span class="module-tag" data-i18n="mod.s1">Mathématiques</span>
+          <span class="module-tag" data-i18n="mod.s2">Physique</span>
+          <span class="module-tag" data-i18n="mod.s3">Sciences de l'ingénieur</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date" data-i18n="tl.date.renoir">2019 - 2022</div>
+        <div class="timeline-school">Lycée Jean Renoir · <span data-i18n="tl.renoir.loc">Bondy, France</span></div>
+        <div class="timeline-degree" data-i18n="tl.renoir.deg">Baccalauréat Général · Mention Très Bien</div>
+        <div class="timeline-modules">
+          <span class="module-tag" data-i18n="mod.b1">Mathématiques</span>
+          <span class="module-tag" data-i18n="mod.b2">Physique-Chimie</span>
+          <span class="module-tag" data-i18n="mod.b3">Maths Expertes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section id="skills">
   <div class="container reveal">
-    <div class="section-label" data-i18n="skills.label">// 03 · Compétences</div>
-    <h2 data-i18n="skills.h2">Stack technique</h2>
     <p class="section-lead" data-i18n="skills.lead">Un profil qui couvre la simulation numérique, la physique expérimentale et la data science.</p>
     <div class="skills-layout">
       <div>
@@ -712,7 +738,7 @@
 <section id="contact">
   <div class="container">
     <div class="contact-box reveal">
-      <div class="section-label" data-i18n="contact.label">// 04 · Contact</div>
+      <div class="section-label" data-i18n="contact.label">// 05 · Contact</div>
       <h2 data-i18n="contact.h2">Ouvert aux opportunités</h2>
       <p data-i18n="contact.p">Stage, alternance ou échanges autour de la simulation numérique, la physique et la data science : n'hésitez pas à me contacter.</p>
       <div class="contact-links">
@@ -731,7 +757,7 @@
 <script>
 const T = {
   fr: {
-    'nav.profile':'Profil','nav.projects':'Projets','nav.skills':'Compétences','nav.contact':'Contact',
+    'nav.profile':'Profil','nav.projects':'Projets','nav.experience':'Expérience','nav.education':'Formation','nav.skills':'Compétences','nav.contact':'Contact',
     'hero.tag':'Élève ingénieur · Physique & Data Science',
     'hero.sub':'Élève ingénieur à l\'ESPCI Paris - PSL. Je travaille sur la simulation numérique par éléments finis (FreeFem++), la mécanique des fluides et la physique quantique expérimentale, avec un intérêt croissant pour la data science et l\'intelligence artificielle.',
     'hero.cta1':'Voir mes projets →','hero.cta2':'Me contacter sur LinkedIn',
@@ -751,6 +777,8 @@ const T = {
     'mod.b1':'Mathématiques','mod.b2':'Physique-Chimie','mod.b3':'Maths Expertes',
     'stat.stage':'Stage de recherche (labo SIMM)','stat.projects':'Projets académiques réalisés','stat.schools':'Grandes écoles (ESPCI + prépa)','stat.bac':'Mention au Baccalauréat',
     'proj.label':'// 02 · Projets','proj.h2':'Réalisations académiques & personnelles','proj.lead':'Projets et devoirs réalisés à l\'ESPCI Paris - PSL, ainsi que des travaux personnels menés par curiosité.',
+    'exp.label':'// 03 · Expérience','exp.h2':'Expérience','exp.lead':'Une immersion en laboratoire de recherche, au contact de la modélisation appliquée.',
+    'edu.label':'// 04 · Formation','edu.h2':'Formation','edu.lead':'Un parcours scientifique exigeant, de la classe préparatoire à l\'ESPCI Paris - PSL.',
     'p1.type':'Mécanique des fluides','p1.title':'Modélisation de la fumée d\'une cheminée','p1.partner':'ESPCI Paris - PSL · Projet académique',
     'p1.b1':'Modélisation de la dispersion d\'un gaz émis par une cheminée à l\'aide du modèle k-ε dans le cadre de l\'approximation de Boussinesq, avec le logiciel FreeFem++.','p1.footer':'📄 Lire le rapport',
     'p2.type':'Mécanique des fluides','p2.title':'Modélisation de l\'écoulement d\'un fluide non newtonien','p2.partner':'ESPCI Paris - PSL · Projet académique',
@@ -774,11 +802,11 @@ const T = {
     'skills.label':'// 03 · Compétences','skills.h2':'Stack technique','skills.lead':'Un profil qui couvre la simulation numérique, la physique expérimentale et la data science.',
     'sg.sim':'Simulation & Modélisation','sg.dev':'Data & Développement','sg.phys':'Physique expérimentale','sg.other':'Autres domaines',
     'chip.ia':'Intelligence Artificielle','chip.ml':'Machine Learning','chip.pq':'Physique quantique','chip.stat':'Physique statistique','chip.signal':'Traitement du signal','chip.team':'Travail d\'équipe',
-    'contact.label':'// 04 · Contact','contact.h2':'Ouvert aux opportunités','contact.p':'Stage, alternance ou échanges autour de la simulation numérique, la physique et la data science : n\'hésitez pas à me contacter.',
+    'contact.label':'// 05 · Contact','contact.h2':'Ouvert aux opportunités','contact.p':'Stage, alternance ou échanges autour de la simulation numérique, la physique et la data science : n\'hésitez pas à me contacter.',
     'footer.text':'© 2026 · Téo Roccamatisi · Élève Ingénieur ESPCI Paris - PSL · Paris, France'
   },
   en: {
-    'nav.profile':'Profile','nav.projects':'Projects','nav.skills':'Skills','nav.contact':'Contact',
+    'nav.profile':'Profile','nav.projects':'Projects','nav.experience':'Experience','nav.education':'Education','nav.skills':'Skills','nav.contact':'Contact',
     'hero.tag':'Engineering Student · Physics & Data Science',
     'hero.sub':'Engineering student at ESPCI Paris - PSL. I work on finite element numerical simulation (FreeFem++), fluid mechanics, and experimental quantum physics, with a growing interest in data science and artificial intelligence.',
     'hero.cta1':'View my projects →','hero.cta2':'Contact me on LinkedIn',
@@ -798,6 +826,8 @@ const T = {
     'mod.b1':'Mathematics','mod.b2':'Physics-Chemistry','mod.b3':'Advanced Mathematics',
     'stat.stage':'Research internship (SIMM lab)','stat.projects':'Academic projects completed','stat.schools':'Top schools (ESPCI + CPGE)','stat.bac':'High School Honours',
     'proj.label':'// 02 · Projects','proj.h2':'Academic & Personal Projects','proj.lead':'Projects and coursework from ESPCI Paris - PSL, along with personal projects pursued out of curiosity.',
+    'exp.label':'// 03 · Experience','exp.h2':'Experience','exp.lead':'An immersion in a research laboratory, working on applied modelling.',
+    'edu.label':'// 04 · Education','edu.h2':'Education','edu.lead':'A demanding scientific path, from preparatory classes to ESPCI Paris - PSL.',
     'p1.type':'Fluid Mechanics','p1.title':'Modelling Smoke from a Chimney','p1.partner':'ESPCI Paris - PSL · Academic Project',
     'p1.b1':'Modelling the dispersion of a gas emitted by a chimney using the k-ε model under the Boussinesq approximation, with FreeFem++.','p1.footer':'📄 Read the Report',
     'p2.type':'Fluid Mechanics','p2.title':'Modelling Non-Newtonian Fluid Flow','p2.partner':'ESPCI Paris - PSL · Academic Project',
@@ -821,7 +851,7 @@ const T = {
     'skills.label':'// 03 · Skills','skills.h2':'Technical Stack','skills.lead':'A profile spanning numerical simulation, experimental physics, and data science.',
     'sg.sim':'Simulation & Modelling','sg.dev':'Data & Development','sg.phys':'Experimental Physics','sg.other':'Other Domains',
     'chip.ia':'Artificial Intelligence','chip.ml':'Machine Learning','chip.pq':'Quantum Physics','chip.stat':'Statistical Physics','chip.signal':'Signal Processing','chip.team':'Teamwork',
-    'contact.label':'// 04 · Contact','contact.h2':'Open to Opportunities','contact.p':'Internship, apprenticeship, or discussions around numerical simulation, physics and data science: feel free to get in touch.',
+    'contact.label':'// 05 · Contact','contact.h2':'Open to Opportunities','contact.p':'Internship, apprenticeship, or discussions around numerical simulation, physics and data science: feel free to get in touch.',
     'footer.text':'© 2026 · Téo Roccamatisi · Engineering Student, ESPCI Paris - PSL · Paris, France'
   }
 };
