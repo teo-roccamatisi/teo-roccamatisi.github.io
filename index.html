@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Téo Roccamatisi · Élève Ingénieur ESPCI-PSL</title>
+<meta name="description" content="Portfolio de Téo Roccamatisi, élève ingénieur à l'ESPCI Paris - PSL. Éléments finis, mécanique des fluides, physique quantique, data science.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://teo-roccamatisi.github.io/">
+<meta property="og:title" content="Téo Roccamatisi · Élève Ingénieur ESPCI-PSL">
+<meta property="og:description" content="Élève ingénieur à l'ESPCI Paris - PSL. Éléments finis, simulation numérique, physique quantique et data science.">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%231156ad'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='26' fill='white'>TR</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+<style>
+  :root {
+    --bg: #f5f7fb; --surface: #ffffff; --surface-2: #eef3f9;
+    --ink: #2a3a52; --ink-strong: #0c1a30; --muted: #51647e; --faint: #8da2bb;
+    --blue: #1156ad; --blue-soft: #3f7fd0;
+    --orange: #c95d18; --green: #15835a;
+    --border: rgba(17,86,173,0.14); --border-strong: rgba(17,86,173,0.32);
+    --grid: rgba(17,86,173,0.05);
+    --nav-bg: rgba(245,247,251,0.92);
+    --shadow: 0 1px 2px rgba(12,26,48,0.04), 0 8px 24px -12px rgba(12,26,48,0.10);
+  }
+  body.dark {
+    --bg: #0a1322; --surface: #101c30; --surface-2: #16253e;
+    --ink: #c4d4e8; --ink-strong: #eef6ff; --muted: #7d93ad; --faint: #46607e;
+    --blue: #6ba4ee; --blue-soft: #3e6fae;
+    --orange: #e8843f; --green: #3dbd8a;
+    --border: rgba(107,164,238,0.16); --border-strong: rgba(107,164,238,0.38);
+    --grid: rgba(107,164,238,0.045);
+    --nav-bg: rgba(10,19,34,0.92);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 28px -14px rgba(0,0,0,0.5);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+  body {
+    background: var(--bg);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 80px 80px;
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15.5px; line-height: 1.65;
+    overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  ::selection { background: rgba(17,86,173,0.18); }
+  a, button { font-family: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 3px;
+  }
+
+  h1, h2, h3, .display { font-family: 'Space Grotesk', sans-serif; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0.85rem 2rem;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+    background: var(--nav-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px;
+    color: var(--ink-strong); letter-spacing: 0.04em; text-decoration: none; font-weight: 500;
+  }
+  .nav-logo span { color: var(--orange); }
+  nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+  nav ul a {
+    color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--blue); }
+  .nav-controls { display: flex; align-items: center; gap: 0.4rem; }
+  .lang-btn {
+    background: none; border: none; font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px; letter-spacing: 0.06em; color: var(--muted);
+    cursor: pointer; padding: 4px 7px; border-radius: 3px; transition: color 0.2s;
+  }
+  .lang-btn:hover, .lang-btn.active { color: var(--blue); }
+  .lang-btn.active { font-weight: 600; }
+  .lang-sep { color: var(--faint); font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+  .theme-btn {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+    font-size: 13px; cursor: pointer; padding: 4px 9px; margin-left: 0.35rem;
+    transition: border-color 0.2s; line-height: 1.4;
+  }
+  .theme-btn:hover { border-color: var(--blue); }
+
+  /* ---------- HERO ---------- */
+  #hero { min-height: 92vh; display: flex; align-items: center; padding: 8rem 0 5rem; }
+  .hero-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4.5rem; align-items: center; }
+  .hero-tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--orange);
+    letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-tag::before { content: ''; display: block; width: 34px; height: 1px; background: var(--orange); }
+  h1 {
+    font-size: clamp(2.7rem, 5.2vw, 4rem); font-weight: 700; line-height: 1.04;
+    letter-spacing: -0.02em; margin-bottom: 1.25rem; color: var(--ink-strong);
+  }
+  h1 em { font-style: normal; color: var(--blue); }
+  .hero-sub { font-size: 1.02rem; color: var(--muted); line-height: 1.75; margin-bottom: 2.5rem; max-width: 460px; }
+  .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.6rem; font-size: 13.5px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+    border-radius: 4px; transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+    cursor: pointer; border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--blue); color: #fff; }
+  .btn-primary:hover { background: var(--blue-soft); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--ink); border-color: var(--border-strong); }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+  /* ---------- HUD PANEL ---------- */
+  .hud-panel {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+    padding: 1.6rem 1.75rem; position: relative; overflow: hidden; box-shadow: var(--shadow);
+  }
+  .hud-panel::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blue-soft), transparent);
+  }
+  .hud-header {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--faint);
+    letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1.1rem;
+    display: flex; align-items: center; gap: 0.55rem;
+  }
+  .hud-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
+  .hud-row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+    padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 13.5px;
+  }
+  .hud-row:last-of-type { border-bottom: none; }
+  .hud-label { color: var(--muted); }
+  .hud-value { color: var(--blue); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-align: right; }
+  .hud-value.orange { color: var(--orange); }
+  .hud-value.green { color: var(--green); }
+  .hud-research { margin-top: 1.1rem; padding-top: 0.15rem; border-top: 1px solid var(--border); }
+  .hud-research .hud-row:last-of-type { border-bottom: none; }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding: 6.5rem 0; position: relative; z-index: 1; }
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--orange);
+    letter-spacing: 0.26em; text-transform: uppercase; margin-bottom: 0.85rem;
+  }
+  h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 700; color: var(--ink-strong); letter-spacing: -0.015em; margin-bottom: 0.9rem; }
+  .section-lead { color: var(--muted); font-size: 1.02rem; max-width: 580px; margin-bottom: 3.25rem; line-height: 1.75; }
+  .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-strong), transparent); }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 4rem; align-items: start; }
+  .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1.1rem; }
+  .about-text p strong { color: var(--ink-strong); font-weight: 600; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.25rem; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); padding: 1.2rem 1.3rem; border-radius: 6px; box-shadow: var(--shadow); }
+  .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.9rem; font-weight: 700; color: var(--blue); line-height: 1; margin-bottom: 0.45rem; }
+  .stat-num.orange { color: var(--orange); }
+  .stat-label { font-size: 12.5px; color: var(--muted); letter-spacing: 0.02em; line-height: 1.45; }
+
+  .edu-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--orange);
+    letter-spacing: 0.26em; text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .timeline { position: relative; padding-left: 1.6rem; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 7px; bottom: 6px; width: 1px; background: var(--border-strong); }
+  .timeline-item { position: relative; margin-bottom: 2.25rem; }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: calc(-1.6rem - 3.5px); top: 6px;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--blue);
+    box-shadow: 0 0 0 3px var(--bg);
+  }
+  .timeline-date { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--faint); letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+  .timeline-school { font-family: 'Space Grotesk', sans-serif; font-size: 1.02rem; font-weight: 600; color: var(--ink-strong); margin-bottom: 0.2rem; }
+  .timeline-degree { font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+  .timeline-modules { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.65rem; }
+  .module-tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--muted);
+    background: var(--surface-2); border: 1px solid var(--border); padding: 2.5px 8px; border-radius: 3px;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid { display: flex; flex-direction: column; gap: 1.75rem; }
+  .project-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+    overflow: hidden; transition: border-color 0.25s, box-shadow 0.25s; box-shadow: var(--shadow);
+  }
+  .project-card:hover { border-color: var(--border-strong); }
+
+  .project-head { padding: 1.75rem 2.25rem 0; }
+  .project-type {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; padding: 3.5px 9px; border-radius: 3px; display: inline-block; margin-bottom: 0.9rem;
+  }
+  .type-ai { color: var(--blue); background: rgba(17,86,173,0.07); border: 1px solid rgba(17,86,173,0.22); }
+  .type-aero { color: var(--orange); background: rgba(201,93,24,0.07); border: 1px solid rgba(201,93,24,0.25); }
+  .type-both { color: var(--green); background: rgba(21,131,90,0.07); border: 1px solid rgba(21,131,90,0.25); }
+  body.dark .type-ai { background: rgba(107,164,238,0.08); border-color: rgba(107,164,238,0.3); }
+  body.dark .type-aero { background: rgba(232,132,63,0.08); border-color: rgba(232,132,63,0.3); }
+  body.dark .type-both { background: rgba(61,189,138,0.08); border-color: rgba(61,189,138,0.3); }
+
+  .project-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--ink-strong); margin-bottom: 0.3rem; letter-spacing: -0.01em; }
+  .project-partner { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--faint); letter-spacing: 0.07em; }
+
+  .project-body { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.25rem; padding: 1.25rem 2.25rem 2rem; }
+  .project-bullets { list-style: none; }
+  .project-bullets li {
+    font-size: 13.5px; color: var(--muted); line-height: 1.65;
+    padding: 0.45rem 0 0.45rem 1.15rem; position: relative; border-bottom: 1px solid var(--border);
+  }
+  .project-bullets li:last-child { border-bottom: none; padding-bottom: 0; }
+  .project-bullets li:first-child { padding-top: 0; }
+  .project-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--blue); font-weight: 600; }
+  .project-bullets li.orange::before { color: var(--orange); }
+  .project-bullets li:first-child::before { top: -1px; }
+
+  .project-result {
+    background: var(--surface-2); border-left: 2px solid var(--blue);
+    padding: 0.85rem 1.1rem; border-radius: 0 5px 5px 0;
+    font-size: 13px; color: var(--muted); line-height: 1.6;
+  }
+  .project-result strong { color: var(--ink-strong); font-weight: 600; }
+  .project-result.orange-border { border-left-color: var(--orange); }
+  .project-result.green-border { border-left-color: var(--green); }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.15rem; }
+  .tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--muted);
+    background: var(--surface-2); padding: 3px 8px; border-radius: 3px; letter-spacing: 0.04em;
+  }
+
+  .project-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.85rem 2.25rem; border-top: 1px solid var(--border);
+    color: var(--blue); font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .project-footer:hover { background: rgba(17,86,173,0.045); }
+  body.dark .project-footer:hover { background: rgba(107,164,238,0.06); }
+  .project-footer.accent-orange { color: var(--orange); }
+  .project-footer.accent-orange:hover { background: rgba(201,93,24,0.05); }
+  .project-footer.accent-green { color: var(--green); }
+  .project-footer.accent-green:hover { background: rgba(21,131,90,0.05); }
+  .project-footer-icon { font-size: 15px; transition: transform 0.2s; }
+  .project-footer:hover .project-footer-icon { transform: translate(3px,-3px); }
+  .project-footer-double { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); }
+  .project-footer-double .project-footer { border-top: none; }
+  .project-footer-double .project-footer:first-child { border-right: 1px solid var(--border); }
+
+  /* ---------- SKILLS ---------- */
+  .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .skill-group-title {
+    font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 1.2rem; font-weight: 600;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .skill-group-title::before { content: ''; display: block; width: 3px; height: 14px; background: var(--blue); border-radius: 2px; }
+  .skill-group-title.orange-accent::before { background: var(--orange); }
+  .skills-chips { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+  .chip {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 5px 12px;
+    border: 1px solid var(--border); border-radius: 4px; color: var(--muted);
+    background: var(--surface); transition: border-color 0.2s, color 0.2s;
+  }
+  .chip:hover { border-color: var(--blue); color: var(--blue); }
+  .chip.orange:hover { border-color: var(--orange); color: var(--orange); }
+
+  /* ---------- CONTACT ---------- */
+  #contact { text-align: center; }
+  .contact-box {
+    max-width: 640px; margin: 0 auto; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 6px; padding: 3.25rem 3rem;
+    position: relative; overflow: hidden; box-shadow: var(--shadow);
+  }
+  .contact-box::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  }
+  .contact-box h2 { margin-bottom: 0.75rem; }
+  .contact-box p { color: var(--muted); margin-bottom: 2.25rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+  .contact-links { display: flex; justify-content: center; gap: 0.9rem; flex-wrap: wrap; }
+
+  footer {
+    border-top: 1px solid var(--border); padding: 2rem;
+    text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--faint);
+  }
+
+  /* ---------- MOTION & RESPONSIVE ---------- */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .hud-dot { animation: none; }
+    * { transition-duration: 0.01ms !important; }
+  }
+
+  @media (max-width: 880px) {
+    .hero-inner, .about-grid, .project-body { grid-template-columns: 1fr; gap: 2.25rem; }
+    .skills-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    #hero { padding-top: 9rem; min-height: 0; }
+    section { padding: 4.5rem 0; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 1.25rem; }
+    nav { padding: 0.75rem 1.25rem; }
+    nav ul { gap: 1.1rem; }
+    nav ul a { font-size: 11.5px; letter-spacing: 0.06em; }
+    .project-head { padding: 1.5rem 1.4rem 0; }
+    .project-body { padding: 1.1rem 1.4rem 1.75rem; }
+    .project-footer { padding: 0.85rem 1.4rem; }
+    .project-footer-double { grid-template-columns: 1fr; }
+    .project-footer-double .project-footer:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+    .contact-box { padding: 2.5rem 1.5rem; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo"><span>//</span> teo.roccamatisi</a>
+  <ul>
+    <li><a href="#about" data-i18n="nav.profile">Profil</a></li>
+    <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
+    <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Changer de thème">🌙</button>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag" data-i18n="hero.tag">Élève ingénieur · Physique & Data Science</div>
+        <h1>Téo <em>Rocca&shy;matisi</em></h1>
+        <p class="hero-sub" data-i18n="hero.sub">Élève ingénieur à l'ESPCI Paris - PSL. Je travaille sur la simulation numérique par éléments finis (FreeFem++), la mécanique des fluides et la physique quantique expérimentale, avec un intérêt croissant pour la data science et l'intelligence artificielle.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary" data-i18n="hero.cta1">Voir mes projets →</a>
+          <a href="https://www.linkedin.com/in/teo-roccamatisi/" class="btn btn-outline" target="_blank" data-i18n="hero.cta2">Me contacter sur LinkedIn</a>
+        </div>
+      </div>
+      <div class="hud-panel">
+        <div class="hud-header"><span class="hud-dot"></span><span data-i18n="hud.status">profil.status · actif</span></div>
+        <div class="hud-row"><span class="hud-label" data-i18n="hud.l.edu">Formation</span><span class="hud-value">ESPCI Paris - PSL</span></div>
+        <div class="hud-row"><span class="hud-label" data-i18n="hud.l.spec">Spécialité</span><span class="hud-value orange" data-i18n="hud.v.spec">Physique, Simulation & IA</span></div>
+        <div class="hud-row"><span class="hud-label" data-i18n="hud.l.loc">Localisation</span><span class="hud-value">Paris, France 🇫🇷</span></div>
+        <div class="hud-row"><span class="hud-label" data-i18n="hud.l.seek">Recherche</span><span class="hud-value green" data-i18n="hud.v.seek">Stage / alternance · à venir</span></div>
+        <div class="hud-row"><span class="hud-label" data-i18n="hud.l.mention">Bac</span><span class="hud-value">Mention Très Bien</span></div>
+        <div class="hud-research">
+          <div class="hud-header" style="margin-top:1.1rem"><span data-i18n="hud.research">// dernière expérience</span></div>
+          <div class="hud-row"><span class="hud-label" data-i18n="hud.r.topic">Sujet</span><span class="hud-value" data-i18n="hud.r.topic.v">Déformation de vésicules en microfluidique</span></div>
+          <div class="hud-row"><span class="hud-label" data-i18n="hud.r.partner">Laboratoire</span><span class="hud-value orange">SIMM (UMR 7615), Paris</span></div>
+          <div class="hud-row"><span class="hud-label" data-i18n="hud.r.stack">Stack</span><span class="hud-value">Python · Modélisation</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <div class="section-label" data-i18n="about.label">// 01 · Profil</div>
+        <h2 data-i18n="about.h2">Entre physique expérimentale et modélisation numérique</h2>
+        <p data-i18n="about.p1">Je suis étudiant en école d'ingénieurs à l'<strong>ESPCI Paris - PSL</strong>, une grande école spécialisée en physique et chimie qui combine théorie avancée et travaux pratiques en laboratoire.</p>
+        <p data-i18n="about.p2">Ma formation est pluridisciplinaire : mathématiques appliquées, modélisation numérique par éléments finis, traitement des données et intelligence artificielle, pour une approche complète de la recherche et de l'innovation.</p>
+        <p data-i18n="about.p3">Je partage ici des projets et devoirs réalisés dans le cadre de ma formation, ainsi que des travaux personnels menés par intérêt et curiosité. Ces projets ne visent pas le formalisme d'un article scientifique, mais reflètent mon approche et mes méthodes de travail.</p>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-num">1</div><div class="stat-label" data-i18n="stat.stage">Stage de recherche (labo SIMM)</div></div>
+          <div class="stat-card"><div class="stat-num orange">9</div><div class="stat-label" data-i18n="stat.projects">Projets académiques réalisés</div></div>
+          <div class="stat-card"><div class="stat-num">2</div><div class="stat-label" data-i18n="stat.schools">Grandes écoles (ESPCI + prépa)</div></div>
+          <div class="stat-card"><div class="stat-num orange">TB</div><div class="stat-label" data-i18n="stat.bac">Mention au Baccalauréat</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="edu-label" data-i18n="about.exp.label">// Expérience</div>
+        <div class="timeline" style="margin-bottom:2.5rem">
+          <div class="timeline-item">
+            <div class="timeline-date">JUIN 2025 - AOÛT 2025</div>
+            <div class="timeline-school">Laboratoire SIMM · <span data-i18n="tl.simm.loc">Paris, France</span></div>
+            <div class="timeline-degree" data-i18n="tl.simm.deg">Stage de recherche · Sciences et Ingénierie de la Matière Molle (UMR 7615)</div>
+            <div class="timeline-modules">
+              <span class="module-tag" data-i18n="mod.x1">Algorithme de modélisation</span>
+              <span class="module-tag" data-i18n="mod.x2">Déformation de vésicules</span>
+              <span class="module-tag" data-i18n="mod.x3">Piège microfluidique</span>
+            </div>
+          </div>
+        </div>
+        <div class="edu-label" data-i18n="about.edu.label">// Formation</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date" data-i18n="tl.date.espci">2024 - AUJOURD'HUI</div>
+            <div class="timeline-school">ESPCI Paris - PSL · <span data-i18n="tl.espci.loc">Paris, France</span></div>
+            <div class="timeline-degree" data-i18n="tl.espci.deg">Élève ingénieur · Grande École spécialisée en physique et chimie</div>
+            <div class="timeline-modules">
+              <span class="module-tag" data-i18n="mod.e1">Mathématiques appliquées</span>
+              <span class="module-tag" data-i18n="mod.e2">Modélisation numérique</span>
+              <span class="module-tag" data-i18n="mod.e3">Traitement des données</span>
+              <span class="module-tag" data-i18n="mod.e4">Intelligence artificielle</span>
+              <span class="module-tag" data-i18n="mod.e5">Éléments finis (PSL Week, Mines Paris)</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date" data-i18n="tl.date.saintlouis">2022 - 2024</div>
+            <div class="timeline-school">Lycée Saint-Louis · <span data-i18n="tl.saintlouis.loc">Paris, France</span></div>
+            <div class="timeline-degree" data-i18n="tl.saintlouis.deg">Classe Préparatoire aux Grandes Écoles · filière MPSI-PSI</div>
+            <div class="timeline-modules">
+              <span class="module-tag" data-i18n="mod.s1">Mathématiques</span>
+              <span class="module-tag" data-i18n="mod.s2">Physique</span>
+              <span class="module-tag" data-i18n="mod.s3">Sciences de l'ingénieur</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date" data-i18n="tl.date.renoir">2019 - 2022</div>
+            <div class="timeline-school">Lycée Jean Renoir · <span data-i18n="tl.renoir.loc">Bondy, France</span></div>
+            <div class="timeline-degree" data-i18n="tl.renoir.deg">Baccalauréat Général · Mention Très Bien</div>
+            <div class="timeline-modules">
+              <span class="module-tag" data-i18n="mod.b1">Mathématiques</span>
+              <span class="module-tag" data-i18n="mod.b2">Physique-Chimie</span>
+              <span class="module-tag" data-i18n="mod.b3">Maths Expertes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-label" data-i18n="proj.label">// 02 · Projets</div>
+    <h2 data-i18n="proj.h2">Réalisations académiques & personnelles</h2>
+    <p class="section-lead" data-i18n="proj.lead">Projets et devoirs réalisés à l'ESPCI Paris - PSL, ainsi que des travaux personnels menés par curiosité.</p>
+    <div class="projects-grid">
+
+      <!-- PROJET 1 : Fumée cheminée -->
+      <article class="project-card reveal">
+        <div class="project-head">
+          <span class="project-type type-aero" data-i18n="p1.type">Mécanique des fluides</span>
+          <h3 class="project-title" data-i18n="p1.title">Modélisation de la fumée d'une cheminée</h3>
+          <div class="project-partner" data-i18n="p1.partner">ESPCI Paris - PSL · Projet académique</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li data-i18n="p1.b1">Modélisation de la dispersion d'un gaz émis par une cheminée à l'aide du modèle k-ε dans le cadre de l'approximation de Boussinesq, avec le logiciel FreeFem++.</li>
+          </ul>
+          <div>
+            <div class="project-tags">
+              <span class="tag">Éléments finis</span><span class="tag">Mécanique des fluides</span><span class="tag">Thermodynamique</span><span class="tag">FreeFem++</span>
+            </div>
+          </div>
+        </div>
+        <a href="pdfs/cheminee_FEM.pdf" target="_blank" class="project-footer">
+          <span data-i18n="p1.footer">📄 Lire le rapport</span><span class="project-footer-icon">↗</span>
+        </a>
+      </article>
+
+      <!-- PROJET 2 : Fluide non newtonien -->
+      <article class="project-card reveal">
+        <div class="project-head">
+          <span class="project-type type-aero" data-i18n="p2.type">Mécanique des fluides</span>
+          <h3 class="project-title" data-i18n="p2.title">Modélisation de l'écoulement d'un fluide non newtonien</h3>
+          <div class="project-partner" data-i18n="p2.partner">ESPCI Paris - PSL · Projet académique</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li data-i18n="p2.b1">Simulation par éléments finis d'un écoulement non-isotherme, avec étude du couplage fort entre vitesse, température et viscosité (modèle rhéologique), pour des applications comme l'impression 3D.</li>
+            <li class="orange" data-i18n="p2.b2">Réalisé avec le logiciel FreeFem++.</li>
+          </ul>
+          <div>
+            <div class="project-tags">
+              <span class="tag">FreeFem++</span><span class="tag">Mécanique des fluides</span><span class="tag">Éléments finis</span><span class="tag">Thermodynamique</span>
+            </div>
+          </div>
+        </div>
+        <a href="pdfs/fluide_non_newtonien_FEM.pdf" target="_blank" class="project-footer">
+          <span data-i18n="p2.footer">📄 Lire le rapport</span><span class="project-footer-icon">↗</span>
+        </a>
+      </article>
+
+      <!-- PROJET 3 : Percolation -->
+      <article class="project-card reveal">
+        <div class="project-head">
+          <span class="project-type type-aero" data-i18n="p3.type">Physique statistique</span>
+          <h3 class="project-title" data-i18n="p3.title">Modélisation de la percolation (éléments finis)</h3>
+          <div class="project-partner" data-i18n="p3.partner">ESPCI Paris - PSL · Projet académique</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li data-i18n="p3.b1">Étude de la conduction électrique dans un matériau hétérogène binaire (isolant/conducteur).</li>
+            <li class="orange" data-i18n="p3.b2">Simulation de la transition de phase et calculs de résistance équivalente avec FreeFem++.</li>
+          </ul>
+          <div>
+            <div class="project-tags">
+              <span class="tag">FreeFem++</span><span class="tag">Physique statistique</span><span class="tag">Modélisation</span>
+            </div>
+          </div>
+        </div>
+        <a href="pdfs/conducteur_hetero_FEM.pdf" target="_blank" class="project-footer">
+          <span data-i18n="p3.footer">📄 Lire le rapport</span><span class="project-footer-icon">↗</span>
+        </a>
+      </article>
+
+      <!-- PROJET 4 : HI!CKATHON -->
+      <article class="project-card reveal">
+        <div class="project-head">
+          <span class="project-type type-both" data-i18n="p4.type">Data Science + Innovation</span>
+          <h3 class="project-title" data-i18n="p4.title">HI!CKATHON : Innovation & Data Science</h3>
+          <div class="project-partner" data-i18n="p4.partner">Hackathon Hi! PARIS (HEC / IP Paris)</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li data-i18n="p4.b1">Challenge double : compétition de Data Science (prédiction de scores scolaires) avec LightGBM et XGBoost.</li>
+            <li class="orange" data-i18n="p4.b2">Conception d'une solution innovante ("Harmonia", un jeu de cartes) pour améliorer la santé mentale des étudiants, avec pitch et business plan devant un jury.</li>
+          </ul>
+          <div>
+            <div class="project-tags">
+              <span class="tag">Data Science</span><span class="tag">Machine Learning</span><span class="tag">Python</span><span class="tag">LightGBM</span><span class="tag">XGBoost</span><span class="tag">Travail d'équipe</span><span class="tag">Pitch</span>
+            </div>
+          </div>
+        </div>
+        <a href="pdfs/Hackathon.pdf" target="_blank" class="project-footer">
+          <span data-i18n="p4.footer">📄 Lire le rapport</span><span class="project-footer-icon">↗</span>
+        </a>
+      </article>
+
+      <!-- PROJET 5 : TIPE frein à disque -->
+      <article class="project-card reveal">
+        <div class="project-head">
+          <span class="project-type type-both" data-i18n="p5.type">Thermodynamique + Expérimentation</span>
+          <h3 class="project-title" data-i18n="p5.title">TIPE : Étude d'un frein à disque</h3>
+          <div class="project-partner" data-i18n="p5.partner">Classe Préparatoire · Lycée Saint-Louis</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li data-i18n="p5.b1">Analyse thermodynamique du freinage : modélisation numérique des flux de chaleur (conduction, convection, rayonnement).</li>
+            <li class="orange" data-i18n="p5.b2">Confrontation du modèle avec des mesures expérimentales sur banc d'essai.</li>
+          </ul>
+          <div>
+            <div class="project-tags">
+              <span class="tag">Thermodynamique</span><span class="tag">Expérimentation</span><span class="tag">Modélisation</span><span class="tag">Python</span>
+            </div>
+          </div>
+        </div>
+        <a href="pdfs/TIPE_disc.pdf" target="_blank" class="project-footer">
+          <span data-i18n="p5.footer">📄 Lire le rapport</span><span class="project-footer-icon">↗</span>
+        </a>
+      </article>
+
+      <!-- PROJET 6 : Centre NV -->
+      <article class="project-card reveal">
+        <div class="project-head">
+          <span class="project-type type-aero" data-i18n="p6.type">Physique quantique</span>
+          <h3 class="project-title" data-i18n="p6.title">Physique quantique : centre NV du diamant</h3>
+          <div class="project-partner" data-i18n="p6.partner">ESPCI Paris - PSL · Travaux pratiques</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li data-i18n="p6.b1">Étude expérimentale des défauts azote-lacune (Centre NV) dans le diamant.</li>
+            <li class="orange" data-i18n="p6.b2">Analyse de la fluorescence, du pompage optique et des niveaux de spin électronique.</li>
+          </ul>
+          <div>
+            <div class="project-tags">
+              <span class="tag">Physique quantique</span><span class="tag">Optique</span><span class="tag">Spectroscopie</span>
+            </div>
+          </div>
+        </div>
+        <a href="pdfs/TP_PQ_NV.pdf" target="_blank" class="project-footer">
+          <span data-i18n="p6.footer">📄 Lire le rapport</span><span class="project-footer-icon">↗</span>
+        </a>
+      </article>
+
+      <!-- PROJET 7 : Effet Zeeman -->
+      <article class="project-card reveal">
+        <div class="project-head">
+          <span class="project-type type-aero" data-i18n="p7.type">Physique quantique</span>
+          <h3 class="project-title" data-i18n="p7.title">Effet Zeeman</h3>
+          <div class="project-partner" data-i18n="p7.partner">ESPCI Paris - PSL · Travaux pratiques</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li data-i18n="p7.b1">Mesure de la levée de dégénérescence des niveaux d'énergie atomiques sous champ magnétique (effet Zeeman) à l'aide d'un interféromètre de Fabry-Pérot.</li>
+            <li class="orange" data-i18n="p7.b2">Calcul du magnéton de Bohr.</li>
+          </ul>
+          <div>
+            <div class="project-tags">
+              <span class="tag">Physique quantique</span><span class="tag">Interférométrie</span><span class="tag">Optique expérimentale</span>
+            </div>
+          </div>
+        </div>
+        <a href="pdfs/TP_PQ_Zeeman.pdf" target="_blank" class="project-footer">
+          <span data-i18n="p7.footer">📄 Lire le rapport</span><span class="project-footer-icon">↗</span>
+        </a>
+      </article>
+
+      <!-- PROJET 8 : RMN -->
+      <article class="project-card reveal">
+        <div class="project-head">
+          <span class="project-type type-aero" data-i18n="p8.type">Physique quantique</span>
+          <h3 class="project-title" data-i18n="p8.title">Résonance Magnétique Nucléaire (RMN)</h3>
+          <div class="project-partner" data-i18n="p8.partner">ESPCI Paris - PSL · Travaux pratiques</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li data-i18n="p8.b1">Étude des principes de la RMN : mesure des temps de relaxation (T1, T2) par échos de spin et méthode de Carr-Purcell.</li>
+            <li class="orange" data-i18n="p8.b2">Analyse spectrale par Transformée de Fourier.</li>
+          </ul>
+          <div>
+            <div class="project-tags">
+              <span class="tag">Physique quantique</span><span class="tag">RMN</span><span class="tag">Traitement du signal</span>
+            </div>
+          </div>
+        </div>
+        <a href="pdfs/TP_de_PQ_RMN.pdf" target="_blank" class="project-footer">
+          <span data-i18n="p8.footer">📄 Lire le rapport</span><span class="project-footer-icon">↗</span>
+        </a>
+      </article>
+
+      <!-- PROJET 9 : Billard américain -->
+      <article class="project-card reveal">
+        <div class="project-head">
+          <span class="project-type type-ai" data-i18n="p9.type">Simulation numérique</span>
+          <h3 class="project-title" data-i18n="p9.title">Simulation numérique : billard américain</h3>
+          <div class="project-partner" data-i18n="p9.partner">Projet personnel</div>
+        </div>
+        <div class="project-body">
+          <ul class="project-bullets">
+            <li data-i18n="p9.b1">Simulation déterministe de la "casse" au billard codée en Python.</li>
+            <li class="orange" data-i18n="p9.b2">Modélisation des chocs élastiques multiples pour étudier la sensibilité aux conditions initiales et le chaos.</li>
+          </ul>
+          <div>
+            <div class="project-tags">
+              <span class="tag">Python</span><span class="tag">Simulation numérique</span><span class="tag">Mécanique classique</span>
+            </div>
+          </div>
+        </div>
+        <a href="pdfs/TP_billard.pdf" target="_blank" class="project-footer">
+          <span data-i18n="p9.footer">📄 Lire le rapport</span><span class="project-footer-icon">↗</span>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="skills">
+  <div class="container reveal">
+    <div class="section-label" data-i18n="skills.label">// 03 · Compétences</div>
+    <h2 data-i18n="skills.h2">Stack technique</h2>
+    <p class="section-lead" data-i18n="skills.lead">Un profil qui couvre la simulation numérique, la physique expérimentale et la data science.</p>
+    <div class="skills-layout">
+      <div>
+        <div class="skill-group-title" data-i18n="sg.sim">Simulation & Modélisation</div>
+        <div class="skills-chips">
+          <span class="chip">Éléments finis</span><span class="chip">FreeFem++</span><span class="chip">Matlab</span><span class="chip">Modélisation numérique</span><span class="chip">Mécanique des fluides</span>
+        </div>
+        <div class="skill-group-title" style="margin-top:2.25rem" data-i18n="sg.dev">Data & Développement</div>
+        <div class="skills-chips">
+          <span class="chip">Python</span><span class="chip" data-i18n="chip.ia">Intelligence Artificielle</span><span class="chip" data-i18n="chip.ml">Machine Learning</span><span class="chip">LaTeX</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title orange-accent" data-i18n="sg.phys">Physique expérimentale</div>
+        <div class="skills-chips">
+          <span class="chip orange" data-i18n="chip.pq">Physique quantique</span><span class="chip orange">Thermodynamique</span><span class="chip orange">Optique</span><span class="chip orange">Spectroscopie</span><span class="chip orange">RMN</span>
+        </div>
+        <div class="skill-group-title orange-accent" style="margin-top:2.25rem" data-i18n="sg.other">Autres domaines</div>
+        <div class="skills-chips">
+          <span class="chip orange" data-i18n="chip.stat">Physique statistique</span><span class="chip orange" data-i18n="chip.signal">Traitement du signal</span><span class="chip orange" data-i18n="chip.team">Travail d'équipe</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <div class="section-label" data-i18n="contact.label">// 04 · Contact</div>
+      <h2 data-i18n="contact.h2">Ouvert aux opportunités</h2>
+      <p data-i18n="contact.p">Stage, alternance ou échanges autour de la simulation numérique, la physique et la data science : n'hésitez pas à me contacter.</p>
+      <div class="contact-links">
+        <a href="mailto:teo.roccamatisi@espci.fr" class="btn btn-primary">✉ teo.roccamatisi@espci.fr</a>
+        <a href="https://www.linkedin.com/in/teo-roccamatisi/" class="btn btn-outline" target="_blank">LinkedIn</a>
+        <a href="https://github.com/teo-roccamatisi" class="btn btn-outline" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span data-i18n="footer.text">© 2026 · Téo Roccamatisi · Élève Ingénieur ESPCI Paris - PSL · Paris, France</span>
+</footer>
+
+<script>
+const T = {
+  fr: {
+    'nav.profile':'Profil','nav.projects':'Projets','nav.skills':'Compétences','nav.contact':'Contact',
+    'hero.tag':'Élève ingénieur · Physique & Data Science',
+    'hero.sub':'Élève ingénieur à l\'ESPCI Paris - PSL. Je travaille sur la simulation numérique par éléments finis (FreeFem++), la mécanique des fluides et la physique quantique expérimentale, avec un intérêt croissant pour la data science et l\'intelligence artificielle.',
+    'hero.cta1':'Voir mes projets →','hero.cta2':'Me contacter sur LinkedIn',
+    'hud.status':'profil.status · actif','hud.l.edu':'Formation','hud.l.spec':'Spécialité','hud.v.spec':'Physique, Simulation & IA','hud.l.loc':'Localisation','hud.l.seek':'Recherche','hud.v.seek':'Stage / alternance · à venir','hud.l.mention':'Bac','hud.research':'// dernière expérience','hud.r.topic':'Sujet','hud.r.topic.v':'Déformation de vésicules en microfluidique','hud.r.partner':'Laboratoire','hud.r.stack':'Stack',
+    'about.label':'// 01 · Profil','about.h2':'Entre physique expérimentale et modélisation numérique',
+    'about.p1':'Je suis étudiant en école d\'ingénieurs à l\'<strong>ESPCI Paris - PSL</strong>, une grande école spécialisée en physique et chimie qui combine théorie avancée et travaux pratiques en laboratoire.',
+    'about.p2':'Ma formation est pluridisciplinaire : mathématiques appliquées, modélisation numérique par éléments finis, traitement des données et intelligence artificielle, pour une approche complète de la recherche et de l\'innovation.',
+    'about.p3':'Je partage ici des projets et devoirs réalisés dans le cadre de ma formation, ainsi que des travaux personnels menés par intérêt et curiosité. Ces projets ne visent pas le formalisme d\'un article scientifique, mais reflètent mon approche et mes méthodes de travail.',
+    'about.exp.label':'// Expérience','about.edu.label':'// Formation',
+    'tl.simm.loc':'Paris, France','tl.simm.deg':'Stage de recherche · Sciences et Ingénierie de la Matière Molle (UMR 7615)',
+    'mod.x1':'Algorithme de modélisation','mod.x2':'Déformation de vésicules','mod.x3':'Piège microfluidique',
+    'tl.date.espci':'2024 - AUJOURD\'HUI','tl.espci.loc':'Paris, France','tl.espci.deg':'Élève ingénieur · Grande École spécialisée en physique et chimie',
+    'mod.e1':'Mathématiques appliquées','mod.e2':'Modélisation numérique','mod.e3':'Traitement des données','mod.e4':'Intelligence artificielle','mod.e5':'Éléments finis (PSL Week, Mines Paris)',
+    'tl.date.saintlouis':'2022 - 2024','tl.saintlouis.loc':'Paris, France','tl.saintlouis.deg':'Classe Préparatoire aux Grandes Écoles · filière MPSI-PSI',
+    'mod.s1':'Mathématiques','mod.s2':'Physique','mod.s3':'Sciences de l\'ingénieur',
+    'tl.date.renoir':'2019 - 2022','tl.renoir.loc':'Bondy, France','tl.renoir.deg':'Baccalauréat Général · Mention Très Bien',
+    'mod.b1':'Mathématiques','mod.b2':'Physique-Chimie','mod.b3':'Maths Expertes',
+    'stat.stage':'Stage de recherche (labo SIMM)','stat.projects':'Projets académiques réalisés','stat.schools':'Grandes écoles (ESPCI + prépa)','stat.bac':'Mention au Baccalauréat',
+    'proj.label':'// 02 · Projets','proj.h2':'Réalisations académiques & personnelles','proj.lead':'Projets et devoirs réalisés à l\'ESPCI Paris - PSL, ainsi que des travaux personnels menés par curiosité.',
+    'p1.type':'Mécanique des fluides','p1.title':'Modélisation de la fumée d\'une cheminée','p1.partner':'ESPCI Paris - PSL · Projet académique',
+    'p1.b1':'Modélisation de la dispersion d\'un gaz émis par une cheminée à l\'aide du modèle k-ε dans le cadre de l\'approximation de Boussinesq, avec le logiciel FreeFem++.','p1.footer':'📄 Lire le rapport',
+    'p2.type':'Mécanique des fluides','p2.title':'Modélisation de l\'écoulement d\'un fluide non newtonien','p2.partner':'ESPCI Paris - PSL · Projet académique',
+    'p2.b1':'Simulation par éléments finis d\'un écoulement non-isotherme, avec étude du couplage fort entre vitesse, température et viscosité (modèle rhéologique), pour des applications comme l\'impression 3D.',
+    'p2.b2':'Réalisé avec le logiciel FreeFem++.','p2.footer':'📄 Lire le rapport',
+    'p3.type':'Physique statistique','p3.title':'Modélisation de la percolation (éléments finis)','p3.partner':'ESPCI Paris - PSL · Projet académique',
+    'p3.b1':'Étude de la conduction électrique dans un matériau hétérogène binaire (isolant/conducteur).','p3.b2':'Simulation de la transition de phase et calculs de résistance équivalente avec FreeFem++.','p3.footer':'📄 Lire le rapport',
+    'p4.type':'Data Science + Innovation','p4.title':'HI!CKATHON : Innovation & Data Science','p4.partner':'Hackathon Hi! PARIS (HEC / IP Paris)',
+    'p4.b1':'Challenge double : compétition de Data Science (prédiction de scores scolaires) avec LightGBM et XGBoost.',
+    'p4.b2':'Conception d\'une solution innovante ("Harmonia", un jeu de cartes) pour améliorer la santé mentale des étudiants, avec pitch et business plan devant un jury.','p4.footer':'📄 Lire le rapport',
+    'p5.type':'Thermodynamique + Expérimentation','p5.title':'TIPE : Étude d\'un frein à disque','p5.partner':'Classe Préparatoire · Lycée Saint-Louis',
+    'p5.b1':'Analyse thermodynamique du freinage : modélisation numérique des flux de chaleur (conduction, convection, rayonnement).','p5.b2':'Confrontation du modèle avec des mesures expérimentales sur banc d\'essai.','p5.footer':'📄 Lire le rapport',
+    'p6.type':'Physique quantique','p6.title':'Physique quantique : centre NV du diamant','p6.partner':'ESPCI Paris - PSL · Travaux pratiques',
+    'p6.b1':'Étude expérimentale des défauts azote-lacune (Centre NV) dans le diamant.','p6.b2':'Analyse de la fluorescence, du pompage optique et des niveaux de spin électronique.','p6.footer':'📄 Lire le rapport',
+    'p7.type':'Physique quantique','p7.title':'Effet Zeeman','p7.partner':'ESPCI Paris - PSL · Travaux pratiques',
+    'p7.b1':'Mesure de la levée de dégénérescence des niveaux d\'énergie atomiques sous champ magnétique (effet Zeeman) à l\'aide d\'un interféromètre de Fabry-Pérot.','p7.b2':'Calcul du magnéton de Bohr.','p7.footer':'📄 Lire le rapport',
+    'p8.type':'Physique quantique','p8.title':'Résonance Magnétique Nucléaire (RMN)','p8.partner':'ESPCI Paris - PSL · Travaux pratiques',
+    'p8.b1':'Étude des principes de la RMN : mesure des temps de relaxation (T1, T2) par échos de spin et méthode de Carr-Purcell.','p8.b2':'Analyse spectrale par Transformée de Fourier.','p8.footer':'📄 Lire le rapport',
+    'p9.type':'Simulation numérique','p9.title':'Simulation numérique : billard américain','p9.partner':'Projet personnel',
+    'p9.b1':'Simulation déterministe de la "casse" au billard codée en Python.','p9.b2':'Modélisation des chocs élastiques multiples pour étudier la sensibilité aux conditions initiales et le chaos.','p9.footer':'📄 Lire le rapport',
+    'skills.label':'// 03 · Compétences','skills.h2':'Stack technique','skills.lead':'Un profil qui couvre la simulation numérique, la physique expérimentale et la data science.',
+    'sg.sim':'Simulation & Modélisation','sg.dev':'Data & Développement','sg.phys':'Physique expérimentale','sg.other':'Autres domaines',
+    'chip.ia':'Intelligence Artificielle','chip.ml':'Machine Learning','chip.pq':'Physique quantique','chip.stat':'Physique statistique','chip.signal':'Traitement du signal','chip.team':'Travail d\'équipe',
+    'contact.label':'// 04 · Contact','contact.h2':'Ouvert aux opportunités','contact.p':'Stage, alternance ou échanges autour de la simulation numérique, la physique et la data science : n\'hésitez pas à me contacter.',
+    'footer.text':'© 2026 · Téo Roccamatisi · Élève Ingénieur ESPCI Paris - PSL · Paris, France'
+  },
+  en: {
+    'nav.profile':'Profile','nav.projects':'Projects','nav.skills':'Skills','nav.contact':'Contact',
+    'hero.tag':'Engineering Student · Physics & Data Science',
+    'hero.sub':'Engineering student at ESPCI Paris - PSL. I work on finite element numerical simulation (FreeFem++), fluid mechanics, and experimental quantum physics, with a growing interest in data science and artificial intelligence.',
+    'hero.cta1':'View my projects →','hero.cta2':'Contact me on LinkedIn',
+    'hud.status':'profile.status · active','hud.l.edu':'Education','hud.l.spec':'Specialty','hud.v.spec':'Physics, Simulation & AI','hud.l.loc':'Location','hud.l.seek':'Seeking','hud.v.seek':'Internship / apprenticeship · upcoming','hud.l.mention':'High School','hud.research':'// latest experience','hud.r.topic':'Topic','hud.r.topic.v':'Vesicle deformation in microfluidic trap','hud.r.partner':'Laboratory','hud.r.stack':'Stack',
+    'about.label':'// 01 · Profile','about.h2':'Between experimental physics and numerical modelling',
+    'about.p1':'I am an engineering student at <strong>ESPCI Paris - PSL</strong>, a top French engineering school specialized in physics and chemistry, combining advanced theory with hands-on laboratory work.',
+    'about.p2':'My training is multidisciplinary: applied mathematics, finite element numerical modelling, data processing and artificial intelligence, for a comprehensive approach to research and innovation.',
+    'about.p3':'Here I share projects and coursework completed as part of my studies, as well as personal projects pursued out of interest and curiosity. These projects don\'t aim for the formalism of a scientific paper, but reflect my approach and working methods.',
+    'about.exp.label':'// Experience','about.edu.label':'// Education',
+    'tl.simm.loc':'Paris, France','tl.simm.deg':'Research internship · Soft Matter Sciences and Engineering Lab (UMR 7615)',
+    'mod.x1':'Modelling algorithm','mod.x2':'Vesicle deformation','mod.x3':'Microfluidic trap',
+    'tl.date.espci':'2024 - PRESENT','tl.espci.loc':'Paris, France','tl.espci.deg':'Engineering student · Top school specialized in physics and chemistry',
+    'mod.e1':'Applied mathematics','mod.e2':'Numerical modelling','mod.e3':'Data processing','mod.e4':'Artificial intelligence','mod.e5':'Finite elements (PSL Week, Mines Paris)',
+    'tl.date.saintlouis':'2022 - 2024','tl.saintlouis.loc':'Paris, France','tl.saintlouis.deg':'Preparatory Classes for Engineering Schools (CPGE) · MPSI-PSI track',
+    'mod.s1':'Mathematics','mod.s2':'Physics','mod.s3':'Engineering Sciences',
+    'tl.date.renoir':'2019 - 2022','tl.renoir.loc':'Bondy, France','tl.renoir.deg':'French Baccalaureate · High Honours',
+    'mod.b1':'Mathematics','mod.b2':'Physics-Chemistry','mod.b3':'Advanced Mathematics',
+    'stat.stage':'Research internship (SIMM lab)','stat.projects':'Academic projects completed','stat.schools':'Top schools (ESPCI + CPGE)','stat.bac':'High School Honours',
+    'proj.label':'// 02 · Projects','proj.h2':'Academic & Personal Projects','proj.lead':'Projects and coursework from ESPCI Paris - PSL, along with personal projects pursued out of curiosity.',
+    'p1.type':'Fluid Mechanics','p1.title':'Modelling Smoke from a Chimney','p1.partner':'ESPCI Paris - PSL · Academic Project',
+    'p1.b1':'Modelling the dispersion of a gas emitted by a chimney using the k-ε model under the Boussinesq approximation, with FreeFem++.','p1.footer':'📄 Read the Report',
+    'p2.type':'Fluid Mechanics','p2.title':'Modelling Non-Newtonian Fluid Flow','p2.partner':'ESPCI Paris - PSL · Academic Project',
+    'p2.b1':'Finite element simulation of a non-isothermal flow, studying the strong coupling between velocity, temperature and viscosity (rheological model), for applications such as 3D printing.',
+    'p2.b2':'Carried out with FreeFem++.','p2.footer':'📄 Read the Report',
+    'p3.type':'Statistical Physics','p3.title':'Modelling Percolation (Finite Elements)','p3.partner':'ESPCI Paris - PSL · Academic Project',
+    'p3.b1':'Study of electrical conduction in a binary heterogeneous material (insulator/conductor).','p3.b2':'Simulation of the phase transition and equivalent resistance calculations with FreeFem++.','p3.footer':'📄 Read the Report',
+    'p4.type':'Data Science + Innovation','p4.title':'HI!CKATHON: Innovation & Data Science','p4.partner':'Hi! PARIS Hackathon (HEC / IP Paris)',
+    'p4.b1':'Dual challenge: a Data Science competition (predicting school scores) using LightGBM and XGBoost.',
+    'p4.b2':'Design of an innovative solution ("Harmonia", a card game) to improve student mental health, with a pitch and business plan presented to a jury.','p4.footer':'📄 Read the Report',
+    'p5.type':'Thermodynamics + Experimentation','p5.title':'TIPE: Study of a Disc Brake','p5.partner':'CPGE · Lycée Saint-Louis',
+    'p5.b1':'Thermodynamic analysis of braking: numerical modelling of heat flows (conduction, convection, radiation).','p5.b2':'Comparison of the model with experimental measurements on a test bench.','p5.footer':'📄 Read the Report',
+    'p6.type':'Quantum Physics','p6.title':'Quantum Physics: NV Center in Diamond','p6.partner':'ESPCI Paris - PSL · Lab Coursework',
+    'p6.b1':'Experimental study of nitrogen-vacancy (NV) defects in diamond.','p6.b2':'Analysis of fluorescence, optical pumping and electronic spin levels.','p6.footer':'📄 Read the Report',
+    'p7.type':'Quantum Physics','p7.title':'Zeeman Effect','p7.partner':'ESPCI Paris - PSL · Lab Coursework',
+    'p7.b1':'Measurement of the splitting of atomic energy levels under a magnetic field (Zeeman effect) using a Fabry-Pérot interferometer.','p7.b2':'Calculation of the Bohr magneton.','p7.footer':'📄 Read the Report',
+    'p8.type':'Quantum Physics','p8.title':'Nuclear Magnetic Resonance (NMR)','p8.partner':'ESPCI Paris - PSL · Lab Coursework',
+    'p8.b1':'Study of NMR principles: measuring relaxation times (T1, T2) via spin echoes and the Carr-Purcell method.','p8.b2':'Spectral analysis via Fourier Transform.','p8.footer':'📄 Read the Report',
+    'p9.type':'Numerical Simulation','p9.title':'Numerical Simulation: American Billiards','p9.partner':'Personal Project',
+    'p9.b1':'Deterministic simulation of the opening break in billiards, coded in Python.','p9.b2':'Modelling of multiple elastic collisions to study sensitivity to initial conditions and chaos.','p9.footer':'📄 Read the Report',
+    'skills.label':'// 03 · Skills','skills.h2':'Technical Stack','skills.lead':'A profile spanning numerical simulation, experimental physics, and data science.',
+    'sg.sim':'Simulation & Modelling','sg.dev':'Data & Development','sg.phys':'Experimental Physics','sg.other':'Other Domains',
+    'chip.ia':'Artificial Intelligence','chip.ml':'Machine Learning','chip.pq':'Quantum Physics','chip.stat':'Statistical Physics','chip.signal':'Signal Processing','chip.team':'Teamwork',
+    'contact.label':'// 04 · Contact','contact.h2':'Open to Opportunities','contact.p':'Internship, apprenticeship, or discussions around numerical simulation, physics and data science: feel free to get in touch.',
+    'footer.text':'© 2026 · Téo Roccamatisi · Engineering Student, ESPCI Paris - PSL · Paris, France'
+  }
+};
+
+let currentLang = 'fr';
+
+const PAGE_TITLE = {
+  fr: 'Téo Roccamatisi · Élève Ingénieur ESPCI-PSL',
+  en: 'Téo Roccamatisi · Engineering Student, ESPCI-PSL'
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.setAttribute('lang', lang);
+  document.title = PAGE_TITLE[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (T[lang][k] !== undefined) el.textContent = T[lang][k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.getAttribute('data-i18n-html');
+    if (T[lang][k] !== undefined) el.innerHTML = T[lang][k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  localStorage.setItem('lang', lang);
+}
+
+function toggleTheme() {
+  const dark = document.body.classList.toggle('dark');
+  document.querySelector('.theme-btn').textContent = dark ? '☀️' : '🌙';
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+}
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Restore preferences
+(function() {
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+    document.querySelector('.theme-btn').textContent = '☀️';
+  }
+  const savedLang = localStorage.getItem('lang') || 'fr';
+  if (savedLang !== 'fr') setLang(savedLang);
+})();
+</script>
+</body>
+</html>
